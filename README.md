@@ -15,9 +15,9 @@
 
 ## Cài Đặt
 
-### Yêu Cầu
-- **Node.js**
-- **npm**
+### Ngôn Ngữ
+- **JavaScript**
+- **PHP**
 - **MySQL** (hoặc các hệ quản trị cơ sở dữ liệu tương đương)
 
 ### Hướng Dẫn Cài Đặt
