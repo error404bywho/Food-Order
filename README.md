@@ -13,8 +13,6 @@
 - **Theo Dõi Đơn Hàng**: Cập nhật trạng thái đơn hàng trong thời gian thực để người dùng biết được thời gian giao hàng.
 - **Đánh Giá và Phản Hồi**: Người dùng có thể đánh giá và để lại phản hồi cho nhà hàng hoặc món ăn đã thử.
 
-## Cài Đặt
-
 ### Ngôn Ngữ
 - **JavaScript**
 - **PHP**
@@ -22,7 +20,7 @@
 
 ### Hướng Dẫn Cài Đặt
 
-1. **Clone dự án**:
+ **Clone dự án**:
    ```bash
    git clone https://github.com/username/food-ordering-app.git
    cd food-ordering-app
