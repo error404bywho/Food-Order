@@ -69,8 +69,6 @@ aria-label = Close cart
 View Cart
 
 
-
-
 #---------- HERO ----------#
 
 25% off all products.
