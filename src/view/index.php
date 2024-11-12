@@ -121,6 +121,17 @@ print_r($user);
                         </button>
                     </div>
                 </div>
+
+                <button class="header-action-btn" aria-label="Open whishlist" data-panel-btn="whishlist">
+                    <ion-icon name="heart-outline"></ion-icon>
+
+                    <data value="3" class="btn-badge">03</data>
+                </button>
+                <button class="header-action-btn" aria-label="Open shopping cart" data-panel-btn="cart">
+                    <ion-icon name="basket-outline"></ion-icon>
+
+                    <data value="2" class="btn-badge">02</data>
+                </button>
             </div>
             </div>
         </div>
@@ -132,5 +143,10 @@ print_r($user);
      -->
      <script src="../../assets/js/script.js"></script>
 
+     <!--
+     - Ionicon Link
+     -->
+     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 </html>
