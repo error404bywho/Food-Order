@@ -1,15 +1,15 @@
 <?php
 session_start();
 if(isset($_SESSION["token"])){
-    header("Location: index.html"); exit();
+    header("Location: index.html"); exit(); 
 }
 
 require "2-google.php";
-if (isset($_POST["code"])) {
-    $token = $goo->fetchAccessTokenWithAuthCode($_POST["code"]);
+if (isset($_GET["code"])) {
+    $token = $goo->fetchAccessTokenWithAuthCode($_GET["code"]);
     if (!isset($token["error"])) {
         // Save token as JSON string to session
-        $_SESSION["token"] = json_encode($token);
+        $_SESSION["token"] = $token;
         header("Location: index.php");
         exit();
     }
@@ -26,17 +26,17 @@ if (isset($_POST["code"])) {
     
 </head>
 <body>
-    
-            <form method="POST">
-                <input type="email" placeholder="Enter the email">
-                <input type="password" placeholder="Enter the password">
-                <input type="submit" name="login" id="login" value="login">
-                <?php   if(isset($token["error"])) { ?>
-                <div>   <?php print_r($token); ?>   </div>
-                <a href="<?php $goo->createAuthUrl(); } ?>">
-                    <input type="submit" name="code" id = "register" value="register by google">
-                </a>
-            </form>
+    <form action="login.php"></form>
+                <?php 
+                      if(isset($token["error"])) { 
+                            print_r($token);
+                            print_r(var_dump($token)); 
+                        } 
+                 ?>   
+                <a href="<?php echo $goo->createAuthUrl();  ?>"> register </a> 
+                    
+              
+          
        
      
    
