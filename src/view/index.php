@@ -22,9 +22,9 @@ if ($goo->isAccessTokenExpired()) {
 $google_oauth = new Google_Service_Oauth2($goo);
 $user = $google_oauth->userinfo->get();
 
-// Display user info
-// echo "<h1>YOU ARE SIGNED IN!</h1>";
-// print_r($user);
+
+echo "<h1>YOU ARE SIGNED IN!</h1>";
+print_r($user);
 ?>
 
 <!DOCTYPE html>

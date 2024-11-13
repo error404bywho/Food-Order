@@ -1,21 +1,25 @@
 <?php
-session_start();
-if(isset($_SESSION["token"])){
-    header("Location: index.html"); exit(); 
-}
+// session_start();
+// if(isset($_SESSION["token"])){
+//     header("Location: index.php"); exit(); 
+// }
 
-require "2-google.php";
-if (isset($_GET["code"])) {
-    $token = $goo->fetchAccessTokenWithAuthCode($_GET["code"]);
-    if (!isset($token["error"])) {
-        // Save token as JSON string to session
-        $_SESSION["token"] = $token;
-        header("Location: index.php");
-        exit();
-    }
-}
+// require "2-google.php";
+// if (isset($_GET["code"])) {
+//     $token = $goo->fetchAccessTokenWithAuthCode($_GET["code"]);
+//     if (!isset($token["error"])) {
+//         // Save token as JSON string to session
+//         $_SESSION["token"] = $token;
+//         header("Location: index.php");
+//         exit();
+//     }
+// }
 
 ?>
+
+<!-- <a href="<?php // echo $goo->createAuthUrl();  ?>"> register </a>  -->
+   
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,13 +37,7 @@ if (isset($_GET["code"])) {
                             print_r(var_dump($token)); 
                         } 
                  ?>   
-                <a href="<?php echo $goo->createAuthUrl();  ?>"> register </a> 
-                    
-              
-          
-       
-     
-   
+                
 </body>
 
 </html>
