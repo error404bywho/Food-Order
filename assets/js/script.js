@@ -76,3 +76,9 @@ function closeAllBtn() {
         panelBtn.classList.remove("active");
     })
 }
+
+
+/**
+ * Header scroll state
+ */
+
