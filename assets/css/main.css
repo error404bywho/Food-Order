@@ -400,19 +400,23 @@ body {
 \*-----------------------------------*/
 
 
+.whishlist-wrapper,
+.cart-wrapper
+{position: relative;}
+
+
 .side-panel {
   position: absolute;
-  top: 25%;
+  top: calc(100% + 25px);
   min-width: 280px;
-  right: 50px;
+  left: 0;
   background-color: var(--white_50);
   border-radius: 16px;
   visibility: hidden;
   opacity: 0;
   scale: 0.4;
-  transition: 200ms cubic-bezier(0, 0.7, 0.3, 1);
+  transition: 0.15s var(--cubic-in);
   box-shadow: 0px 2px 4px 0px #00000033;
-  transform-origin: top right;
   z-index: 4;
   font-size: var(--fs-7);
   display: flex;
@@ -420,7 +424,23 @@ body {
   padding: 15px 15px 20px;
 }
 
-.side-panel.whishlist {transform-origin: top center;}
+.side-panel.whishlist {transform:translateX(var(--transtleX, -140px)) scale(var(--scale, 0.5));}
+
+.side-panel.cart {transform: translateX(var(--transtleX, -210px)) scale(var(--scale, 0.5));}
+
+.side-panel.whishlist.active {
+  visibility: visible;
+  opacity: 1;
+  --scale: 1;
+  transition: 0.35s var(--cubic-out);
+}
+
+.side-panel.cart.active {
+  visibility: visible;
+  opacity: 1;
+  --scale: 1;
+  transition: 0.35s var(--cubic-out);
+}
 
 .side-panel.active {
   visibility: visible;
