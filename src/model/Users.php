@@ -9,10 +9,7 @@ class Users
     private $Phone;
     private $Birthday;
     private $Address;
-    private $Balance;
     private $Role;
-    private $DateCreated;
-    private $DateUpdated;
     private $Status;
 
     public function __construct(
@@ -23,10 +20,7 @@ class Users
         $Phone = null,
         $Birthday = null,
         $Address = null,
-        $Balance = null,
         $Role = null,
-        $DateCreated = null,
-        $DateUpdated = null,
         $Status = null
     ) {
         $this->Id = $Id;
@@ -36,10 +30,7 @@ class Users
         $this->Phone = $Phone;
         $this->Birthday = $Birthday;
         $this->Address = $Address;
-        $this->Balance = $Balance;
         $this->Role = $Role;
-        $this->DateCreated = $DateCreated;
-        $this->DateUpdated = $DateUpdated;
         $this->Status = $Status;
     }
 
@@ -113,16 +104,6 @@ class Users
         $this->Address = $Address;
     }
 
-    public function Get_Balance()
-    {
-        return $this->Balance;
-    }
-
-    public function Set_Balance($Balance)
-    {
-        $this->Balance = $Balance;
-    }
-
     public function Get_Role()
     {
         return $this->Role;
@@ -131,26 +112,6 @@ class Users
     public function Set_Role($Role)
     {
         $this->Role = $Role;
-    }
-
-    public function Get_DateCreated()
-    {
-        return $this->DateCreated;
-    }
-
-    public function Set_DateCreated($DateCreated)
-    {
-        $this->DateCreated = $DateCreated;
-    }
-
-    public function Get_DateUpdated()
-    {
-        return $this->DateUpdated;
-    }
-
-    public function Set_DateUpdated($DateUpdated)
-    {
-        $this->DateUpdated = $DateUpdated;
     }
 
     public function Get_Status()
@@ -165,7 +126,7 @@ class Users
 
     public function __toString()
     {
-        return "Id: {$this->Id}, Email: {$this->Email}, Fullname: {$this->Fullname}, Phone: {$this->Phone}, Birthday: {$this->Birthday}, Address: {$this->Address}, Balance: {$this->Balance}, Role: {$this->Role}, DateCreated: {$this->DateCreated}, DateUpdated: {$this->DateUpdated}, Status: {$this->Status}";
+        return "Id: {$this->Id}, Email: {$this->Email}, Fullname: {$this->Fullname}, Phone: {$this->Phone}, Birthday: {$this->Birthday}, Address: {$this->Address}, Role: {$this->Role},  Status: {$this->Status}";
     }
 }
 
