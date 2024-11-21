@@ -79,6 +79,53 @@ function closeAllBtn() {
 
 
 /**
- * Header scroll state
+ * header sticky and back to top btn
  */
 
+const header = document.querySelector("[data-header]");
+
+const backToTopBtn = document.querySelector("[data-back-top-btn]")
+
+const navbarSlide = document.querySelector(".nav-wrapper");
+
+window.addEventListener("scroll", () => {
+    header.classList[window.scrollY > 240 ? "add" : "remove"]("active")
+    navbarSlide.classList[window.scrollY > 240 ? "add" : "remove"]("active") 
+    backToTopBtn.classList[window.scrollY > 240 ? "add" : "remove"]("active")
+})
+
+
+/**
+ * Move cycle to scroll
+ */
+
+const deliveryBoy = document.querySelector("[data-delivery-boy]");
+
+let deliveryBoyMove = 80;
+
+let lastScrollPos = 0;
+
+window.addEventListener("scroll", function () {
+
+    let deliveryBoyTopPos = deliveryBoy.getBoundingClientRect().top;
+
+    if (deliveryBoyTopPos < 500 && deliveryBoyTopPos > -250) {
+
+        let activeScrollPos = window.scrollY;
+
+        if (lastScrollPos < activeScrollPos) {
+            
+            deliveryBoyMove++;
+
+        } else {
+
+            deliveryBoyMove--;
+
+        }
+
+        lastScrollPos = activeScrollPos;
+
+        deliveryBoy.style.transform = `translateX(${deliveryBoyMove}px)`
+
+    }
+})
