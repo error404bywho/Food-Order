@@ -1,92 +1,47 @@
 <?php
-session_start();
-
+include_once 'Confirm_Email.php';
 include_once 'inc/conn.php';
+include_once 'inc/function_users.php';
 include_once '../model/Users.php';
-
-function hashToElevenDigitId($input)
-{
-    // Băm chuỗi bằng hàm hash SHA-256
-    $hash = hash('sha256', $input);
-    // Chuyển hash thành số nguyên lớn
-    $numericHash = base_convert($hash, 16, 10);
-    // Lấy 6 chữ số cuối từ số nguyên
-    $ElevenDigitId = substr($numericHash, -11);
-    return $ElevenDigitId;
-}
-function hashPassword($input)
-{
-    // Băm chuỗi bằng hàm hash SHA-256
-    $hash = hash('sha256', $input);
-    // Chuyển hash thành số nguyên lớn
-    $password = base_convert($hash, 16, 10);
-    
-    return $password;
-}
 
 if(isset($_POST['Sign_Up'])){
 
-// Prepare SQL query to fetch user details
- // Chuẩn bị câu truy vấn SQL
-    $query = $pdo->prepare("INSERT INTO `users` (`id`,`email`, `password`, `fullname`, `phone`, `birthday`, `address`, `role`, `status`) 
-    VALUES ( :id ,:email, :password, :fullname, :phone, :birthday, :address, :role, :status)");
-
-$Email = $_POST['Email'];
-$Id = hashToElevenDigitId($Email);
-$Username = $_POST['Username'];
-$Password = hashPassword($_POST['Password']);
+$Email = $_POST['Email'];  //normal
+$Id = hashToElevenDigitId($Email); // hash id
+$Username = $_POST['Username']; //normal
+$Password = hashPassword($_POST['Password']); // hash password
 $Full_Name = $_POST['Full_Name'];
-if(!isset($_POST['Phone'])) $Phone = null;
+if(!isset($_POST['Phone'])) $Phone = null;   // no phone is null value
 $Phone = $_POST['Phone'];
-$Birthday =  $_POST['Birthday'];
-if(!isset($_POST['$Address'])) $Address = null;
+$Birthday =  $_POST['Birthday'];    //normal
+if(!isset($_POST['$Address'])) $Address = null; //no address is null value
 $Address = $_POST['Address'];
-$role = 'user';
-$active = 'active';
-
-$query->bindParam(':id', $Id );
-$query->bindParam(':email', $Email);
-$query->bindParam(':password', $Password);
-$query->bindParam(':fullname', $Full_Name);
-$query->bindParam(':phone', $Phone);
-$query->bindParam(':birthday', $Birthday);
-$query->bindParam(':address', $Address);
-$query->bindParam(':role', $role);
-$query->bindParam(':status',$active );
-
-
-try{
-    $query->execute();
-    $result = $query->fetch();
-    if($result){
-        $user = new Users($Id,$Email,$Password,$Full_name,$Phone,$Birthday,$Address,$Role,$Status);
-        $_SESSION['user_session'] = $Email;
-        // Dieu huong cho admin
-        if($Full_name === 'admin') { 
-               Header("Location: ../view/admin.html");
-               exit; 
-        } else {
-        // Dieu huong cho user
-        Header("Location: ../view/index.html");
-        }
-    } else {
-        $_SESSION['what_error'] = "what tf is this error ?";
-        echo $_SESSION['what_error'];
-    }
-} catch(Exception $e){
-        $errorcode = $e->getcode();
-         switch($errorcode) {
-            case '23000':
-                $_SESSION['error'] = "Account Exists !";
-                 break;
-            case '42000':
-                $_SESSION['error'] = "Invalid character, please try again !";
-                 break;
-            default:
-                $_SESSION['error'] = "Lỗi không xác định: " . $e->getMessage();
-                 break;
-         }
-    }
+$role = 'user';         //normal
+$active = 'active';     //normal
+$user = new Users($Id,$Email,$Password,$Full_Name,'','','user','active');
+$result = Insert_User($pdo,$user);
+switch ($result) {
+    case '200':
+        $_SESSION['user_id'] = $user->Get_Id();
+        $_SESSION['email'] = $user->Get_Email();
+        Header("Location : Confirm_Email.php");
+        break;
+    case '400':
+        $_SESSION['error'] = "Something wrong here ! please try again ! ";
+        session_destroy();
+        Header("Location : ../view/sign_up.php");
+        break;
+    case '23000':
+        $_SESSION['error'] = "Email Exists please try again !";
+         break;
+    case '42000':
+        $_SESSION['error'] = "Invalid character, please try again !";
+         break;
+    default:
+        $_SESSION['error'] = "Lỗi không xác định: " . $e->getMessage();
+         break;
 }
+
+} 
 
 ?>

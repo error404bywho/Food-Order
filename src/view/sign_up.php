@@ -1,37 +1,62 @@
 <!-- ================================== REGISTER BY GOOGLE ================================== -->
 <?php
 session_start();
+include '../model/Users.php';
 include '../controller/inc/conn.php';
-// if(isset($_SESSION["token"])){ //neu da ton tai token ==> da ton tai tai khoan ==> dang nhap vao luon.
-//     header("Location: index.html"); exit(); 
-// }
+include_once '../controller/inc/function_users.php';
+include_once '../controller/inc/conn.php';
 require "2-google.php";
+
+function Send_Password_To_Email($Random_Password){
+    /*
+    Send password to email
+    */
+    
+}
+
 if (isset($_GET["code"])) {
     //lay ra gia tri token
     $token = $goo->fetchAccessTokenWithAuthCode($_GET["code"]);
-    if (!isset($token["error"])) {
-       // Prepare SQL query to fetch user details
-        $query = $pdo->prepare("SELECT * FROM users WHERE email = :email");
-        $query->bindParam(':email', $email);
-        $query->execute();
-        $result = $query->fetch();
+    /*  
+        SIGN UP BANG GMAIL CO 3 KHA NANG : 
+        1. DANG KI THANH CONG 
+        1.1 DANG KI DA TON TAI TAI KHOAN => LAY RA USERNAME, EMAIL VA GENERATE RANDOM PASSWORD GUI VE MAIL
+        1.2 DANG KI DA CO TAI KHOAN ==> KIEM TRA DB LAY RA NGUOI DUNG THEO EMAIL 
+        2. DANG KI FAIL
+        */
+    if (!isset($token["error"])) {  //1. DANG KI THANH CONG
+        
+        // Gán Access Token vào Google Client
+        $goo->setAccessToken($token['access_token']);
+        $oauth2 = new Google_Service_Oauth2($goo);
+        // Gọi API để lấy thông tin người dùng
+        $google_user_info = $oauth2->userinfo->get();
+        $email = $google_user_info['email'] ?? null;    // email
 
-        if($result){
-            $Id = $result['$id'];
-            $Email = $result['$Email'];
-            $Password = $result['$Password'];
-            $Fullname = $result['$Fullname'];
-            $Phone = $result['$Phone'];
-            $Birthday = $result['$Birthday'];
-            $Address = $result['$Address'];
-            $Role = $result['$Role'];
-            $Status = $result['$Status'];
-            $user = new Users($Id,$Email,$Password,$Fullname,$Phone,$Birthday,$Address,$Role,$Status);
-            
-            $_SESSION['user_id'] = $Id;
-            header("Location: cart.html"); //login success 
-            exit();
-        }
+        $user = Check_Exist_By_Email($pdo,$email);
+        // 1.1 DANG KI DA TON TAI TAI KHOAN ==> KIEM TRA DB LAY RA NGUOI DUNG THEO EMAIL VA DANG NHAP
+        if($user){ 
+                $_SESSION['user_id'] = $user->Get_Id();
+                header("Location: index.php");  //login success
+                exit();
+        } else // 1.2 DANG KI CHUA CO TAI KHOAN => LAY RA USERNAME VA EMAIL, GENERATE RANDOM PASSWORD, GUI VE MAIL PASSWORD
+            {
+                
+                // Xử lý thông tin người dùng
+                $Random_Password = generateRandomPassword(12);  
+                $name = $google_user_info['name'] ?? null;      // full name
+                $id = hashToElevenDigitId($email);              // id
+                $password = hashPassword($Random_Password);    // password
+                $user = new Users($id,$email,$password,$name,'','','user','active');
+                Insert_User($pdo,$user);
+                Send_Password_To_Email($Random_Password);
+                
+                $_SESSION['user_id'] = $user->Get_Id();
+                header("Location: index.php");  //login success
+            }
+       
+    } else {  // 2. DANG KI FAIL 
+        echo "sign up failed, please try again !";
     }
 }
 ?>

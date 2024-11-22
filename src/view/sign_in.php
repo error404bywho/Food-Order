@@ -15,7 +15,7 @@
     <b>login</b> <br>
     email : <input type="text" name="email" required placeholder = "Enter your Email"> 
     <br>
-    password : <input type="text" name="password" required placeholder = "Password">    
+    password : <input type="password" name="password" required placeholder = "Password">    
     <br>
    
     <!--NOTE :  DÒNG NÀY LÀ THÔNG BÁO LỖI XUẤT HIỆN Ở BÊN TRÊN NÚT SIGN IN  -->
