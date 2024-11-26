@@ -767,7 +767,7 @@
 
             <footer class="footer">
 
-                <div class="footer-top" style="background-image: url('/assets/images/footer-illustration.png');">
+                <div class="footer-top" style="background-image: url('../../assets/images/footer-illustration.png');">
 
                     <div class="container">
 
