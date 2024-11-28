@@ -8,14 +8,19 @@ require '../../vendor_email/PHPMailer/src/Exception.php';
 require '../../vendor_email/PHPMailer/src/PHPMailer.php';
 require '../../vendor_email/PHPMailer/src/SMTP.php';
 
+
 include '../model/Users.php';
 ?>
-<?php
-$email = $_POST['email'] ?? null; // Nếu không tồn tại, $email sẽ là null
 
+<?php
+
+$SendToEmail = $_GET['email'] ; 
+$WithFullName = $_GET['full_name'] ; 
+
+$Code = rand(343434,987654);
 
 // GENERATE CODE 6 DIGIT
-$Code = rand(343434,987654);
+
 //send to email
 
 ?>
@@ -24,37 +29,137 @@ $Code = rand(343434,987654);
 //Create an instance; passing `true` enables exceptions
 $mail = new PHPMailer(true);
 
-try {
+if(isset($SendToEmail) && isset($WithFullName)){
+    try {
    
-    $mail->isSMTP();                                            //Send using SMTP
-    $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
-    $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-    $mail->Username   = 'vuld.23ceb@vku.udn.vn';                     //SMTP username
-    $mail->Password   = 'sqhceilkdncwiefu';                               //SMTP password
-    $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
-    $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
-
-    //Recipients
-    $mail->setFrom('vuld.23ceb@vku.udn.vn', 'MeatEater');
-    $mail->addAddress('connguathanhtroia@gmail.com', 'Joe User');     //Add a recipient
-    // $mail->addReplyTo('info@example.com', 'Information');
-    // $mail->addCC('cc@example.com');
-    // $mail->addBCC('bcc@example.com');
-
-    //Attachments
-    // $mail->addAttachment('/var/tmp/file.tar.gz');         //Add attachments
-    // $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    //Optional name
-
-    //Content
-    $mail->isHTML(true);                                  //Set email format to HTML
-    $mail->Subject = '<h1><b>11032005<b/></h1>';
-    $mail->Body    = 'This is the HTML message body <b>in bold!</b>';
-    $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
-
-    $mail->send();
-    echo 'Message has been sent';
-} catch (Exception $e) {
-    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+        $mail->isSMTP();                                            //Send using SMTP
+        $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+        $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+        $mail->Username   = 'vuld.23ceb@vku.udn.vn';                     //SMTP username
+        $mail->Password   = 'sqhceilkdncwiefu';                               //SMTP password
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+        $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+    
+        //Recipients
+        $mail->setFrom('vuld.23ceb@vku.udn.vn', 'MeatEater');
+        $mail->addAddress($SendToEmail, $WithFullName);     //Add a recipient
+        // $mail->addReplyTo('info@example.com', 'Information');
+        // $mail->addCC('cc@example.com');
+        // $mail->addBCC('bcc@example.com');
+    
+        //Attachments
+        // $mail->addAttachment('/var/tmp/file.tar.gz');         //Add attachments
+        // $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    //Optional name
+    
+        //Content
+        $mail->isHTML(true);                                  //Set email format to HTML
+        $mail->Subject = 'Confirm Your Email Address Before Enjoy Meal :) ! ';
+        
+        $mail->Body    = '
+        <html>
+            <head>
+                <style>
+                    body {
+                        font-family: Arial, sans-serif;
+                        color: #333;
+                        line-height: 1.6;
+                        background-color: #fafafa;
+                        margin: 0;
+                        padding: 0;
+                    }
+                    .email-content {
+                        background-color: #ffffff;
+                        padding: 30px;
+                        border-radius: 10px;
+                        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                        margin: 20px auto;
+                        width: 80%;
+                        max-width: 600px;
+                    }
+                    .email-content h2 {
+                        font-size: 22px;
+                        color: #FF6347; /* Tomato Red */
+                        margin-bottom: 20px;
+                        text-align: center;
+                    }
+                    .email-content p {
+                        font-size: 16px;
+                        margin: 12px 0;
+                        color: #555;
+                    }
+                    .confirmation-code {
+                        font-size: 24px;
+                        font-weight: bold;
+                        color: #fff;
+                        background-color: #FF4500; /* Orange Red */
+                        padding: 10px 20px;
+                        border-radius: 8px;
+                        text-align: center;
+                        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                        display: inline-block;
+                        margin: 10px 0;
+                    }
+                    .footer {
+                        margin-top: 30px;
+                        font-size: 14px;
+                        text-align: center;
+                        color: #999;
+                    }
+                    .footer a {
+                        color: #1E90FF; /* Dodger Blue */
+                        text-decoration: none;
+                    }
+                    .footer a:hover {
+                        text-decoration: underline;
+                    }
+                    .highlight {
+                        color: #FF6347; /* Tomato Red */
+                        font-weight: bold;
+                    }
+                </style>
+            </head>
+            <body>
+                <div class="email-content">
+                    <h2>Hello, '.$WithFullName.' ! </h2>
+                    <p>Thank you for signing up! To complete your registration, please confirm your email address by using the code below:</p>
+                    <p><strong class="highlight">Your confirmation code:</strong></p>
+                    <p class="confirmation-code">' . $Code . '</p>
+                    <p>Simply enter the code in the appropriate field on the registration page, and you will be all set.</p>
+                    <p>If you did not request this, please ignore this email.</p>
+                    <div class="footer">
+                        <p>Best regards,</p>
+                        <p><strong>MeatEater - Food Order Website</strong><br>MeatEater@gmail.com</p>
+                        <p><a href="http://meateater.unaux.com/">Visit Our Website</a></p>
+                    </div>
+                </div>
+            </body>
+        </html>
+    ';
+    
+    
+    
+    $mail->AltBody = "Hello, $WithFullName !
+    
+    Thank you for signing up! To complete your registration, please confirm your email address by using the code below:
+    
+    Your confirmation code: $Code
+    
+    
+    Simply enter the code in the appropriate field on the registration page, and you'll be all set.
+    
+    If you did not request this, please ignore this email.
+    
+    Best regards,
+    MeatEater - Food Order Website. 
+    MeatEater@gmail.com";
+    
+        $mail->send();
+        echo 'Message has been sent';
+    } catch (Exception $e) {
+        echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+    }
+} else {
+    $_SESSION['error']= 'khong co gi het';
 }
 
 ?>
@@ -63,7 +168,7 @@ try {
 if(isset($_POST['code'])){
     //get input code
     $Input_User = $_POST['code'];
-    $Code = '11032005';
+    
     // handle times input
     $Input_Limit = 4;
 

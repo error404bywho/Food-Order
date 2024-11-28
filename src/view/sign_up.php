@@ -81,6 +81,7 @@ if (isset($_GET["code"])) {
         Phone (không bắt buộc)     :     <input type="text" name="Phone" > <br>
         Birthday     :     <input type="text" name="Birthday" > <br>
         Address (Không bắt buộc)   :     <input type="text" name="Address" ><br> 
+        <?php if(isset($_SESSION['error'])) echo '<p style="color:red">'.$_SESSION['error'].'</p>' ?>
         <input type="submit" name="Sign_Up">
     </form>
     <p>---- OR ---- </p>

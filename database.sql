@@ -1,11 +1,13 @@
-DROP DATABASE IF EXISTS `ecommerce`;
+-- DROP DATABASE IF EXISTS `ecommerce`;
 -- Xóa database nếu tồn tại
 -- Tạo database mới
-CREATE DATABASE `ecommerce`;
-USE `ecommerce`;
+-- CREATE DATABASE `ecommerce`;
+-- USE `ecommerce`;
+
 
 -- Bảng: users (người dùng)
 CREATE TABLE `users` (
+
     `id` INT AUTO_INCREMENT PRIMARY KEY,
     `email` VARCHAR(255) NOT NULL UNIQUE,
     `password` VARCHAR(255) NOT NULL,
@@ -19,7 +21,7 @@ CREATE TABLE `users` (
     `dateUpdated` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     `status` ENUM('active', 'inactive') DEFAULT 'active'
 );
-
+ALTER TABLE `users` AUTO_INCREMENT = 1000;
 -- Bảng: category (danh mục sản phẩm)
 CREATE TABLE `category` (
     `id` INT AUTO_INCREMENT PRIMARY KEY,

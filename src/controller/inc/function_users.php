@@ -1,5 +1,9 @@
 <?php
 /* ================================ SELECT USER ================================ */
+function Select_User($pdo,$email){
+
+}
+/* ================================ CHECK LOGIN ================================ */
 function Check_Login($pdo,$email,$plain_password){
     
     $password = hashPassword($plain_password);
@@ -68,35 +72,35 @@ function Check_Exist_By_Email($pdo,$Email){
     }
 }
 /* ================================ INSERT USER ================================ */
-function Insert_User($pdo,$user){
+function Insert_User($pdo,$email,$password,$full_Name,$phone,$birthday,$address,$role,$status){
      $statement = '400'; //fail
 
     // Prepare SQL query to fetch user details
-$query = $pdo->prepare("INSERT INTO `users` (`id`,`email`, `password`, `fullname`, `phone`, `birthday`, `address`, `role`, `status`) 
-VALUES ( :id ,:email, :password, :fullname, :phone, :birthday, :address, :role, :status)");
+$query = $pdo->prepare("INSERT INTO `users` (`email`, `password`, `fullname`, `phone`, `birthday`, `address`, `role`, `status`) 
+VALUES ( :email, :password, :fullname, :phone, :birthday, :address, :role, :status)");
 
-$query->bindParam(':id', $user->Get_Id );
-$query->bindParam(':email', $user->Get_Email);
-$query->bindParam(':password', $user->Get_Password);
-$query->bindParam(':fullname', $user->Get_FullName);
-$query->bindParam(':phone', $user->Get_Phone);
-$query->bindParam(':birthday', $user->Get_Birthday);
-$query->bindParam(':address', $user->Get_Address);
-$query->bindParam(':role', $user->Get_role);
-$query->bindParam(':status',$user->Get_active );
+$query->bindParam(':email', $email);
+$query->bindParam(':password',$password );
+$query->bindParam(':fullname', $full_Name);
+$query->bindParam(':phone',$phone );
+$query->bindParam(':birthday', $birthday);
+$query->bindParam(':address', $address);
+$query->bindParam(':role',$role);
+$query->bindParam(':status',$status);
 try{
     $query->execute();
-    $result = $query->fetch(PDO::FETCH_ASSOC);
-    $_SESSION['test'] = $result['id'];
-    if($result){
+    if($query){
         $statement = '200'; // insert success
+        $_SESSION['get_id'] = $pdo->lastInsertId();
+        
         return $statement;
     } else {                // insert failed
         return $statement;
     }
 } catch(Exception $e){
         $statement = $e->getcode();
-         return $statement;
+        echo $e->getMessage();
+        return $statement;
     }
 }
 /* ================================ DELETE USER ================================ */
