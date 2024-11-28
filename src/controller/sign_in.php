@@ -9,7 +9,7 @@ $password = $_POST['password'];
 
 $user = Check_Login($pdo,$email,$password);
 if($user !== null){
-    if($user->Get_Role === 'admin'){
+    if($user->Get_Role() === 'admin'){
         $_SESSION['session_id'] = $user->get_ID();
         Header("Location: ../view/admin.php");
         exit; 

@@ -86,7 +86,8 @@ $query->bindParam(':role', $user->Get_role);
 $query->bindParam(':status',$user->Get_active );
 try{
     $query->execute();
-    $result = $query->fetch();
+    $result = $query->fetch(PDO::FETCH_ASSOC);
+    $_SESSION['test'] = $result['id'];
     if($result){
         $statement = '200'; // insert success
         return $statement;

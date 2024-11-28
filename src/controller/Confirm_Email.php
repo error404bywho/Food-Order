@@ -11,7 +11,6 @@ require '../../vendor_email/PHPMailer/src/SMTP.php';
 include '../model/Users.php';
 ?>
 <?php
-$Id = $_SESSION['user_id'];
 $email = $_POST['email'] ?? null; // Nếu không tồn tại, $email sẽ là null
 
 
@@ -69,10 +68,12 @@ if(isset($_POST['code'])){
     $Input_Limit = 4;
 
     if($Input_User === $Code){ 
-        header("Location : ../view/index.html"); exit;
+         Header("Location: ../view/index.php"); exit;
+        // echo '<meta http-equiv="refresh" content="0;url=../view/index.php"'; exit();
     } else {
         if($Input_Limit === 0 ){
-            header("Location : ../view/404.html"); exit;
+            header("Location: ../view/404.html");session_destroy();exit;
+            
         } else {
             $_SESSION['error'] = "Invalid code ! please try again. " ."<br> "."($Input_Limit-1) times enter code !";
         }
@@ -91,6 +92,9 @@ if(isset($_POST['code'])){
 <body>
     <form method="POST">
     code <input type="number" name="code">
+    <?php if(isset($_SESSION['error'])) echo $_SESSION['error'] ?>
+    <?php if(isset($_SESSION['test'])) echo $_SESSION['test'] ?>
+    
     <input type="submit">
     </form>
 </body>

@@ -1,5 +1,4 @@
 <?php
-include_once 'Confirm_Email.php';
 include_once 'inc/conn.php';
 include_once 'inc/function_users.php';
 include_once '../model/Users.php';
@@ -21,25 +20,26 @@ $active = 'active';     //normal
 $user = new Users($Id,$Email,$Password,$Full_Name,'','','user','active');
 $result = Insert_User($pdo,$user);
 switch ($result) {
-    case '200':
+    case '200': // ok
         $_SESSION['user_id'] = $user->Get_Id();
         $_SESSION['email'] = $user->Get_Email();
-        Header("Location : Confirm_Email.php");
-        break;
+        Header("Location: /view/Confirm_Email.php"); 
+        exit;
     case '400':
-        $_SESSION['error'] = "Something wrong here ! please try again ! ";
+        $_SESSION['error'] = "Something wrong here ! please try again !";
         session_destroy();
-        Header("Location : ../view/sign_up.php");
-        break;
-    case '23000':
-        $_SESSION['error'] = "Email Exists please try again !";
-         break;
+        Header("Location: /view/sign_up.php");
+        exit;
+    case '23000':   //trung gmail,id
+        // Header("Location: ../view/index.php");
+         $_SESSION['error'] = "Email Exists please try again !";
+         exit;
     case '42000':
         $_SESSION['error'] = "Invalid character, please try again !";
-         break;
+         exit;
     default:
-        $_SESSION['error'] = "Lỗi không xác định: " . $e->getMessage();
-         break;
+        $_SESSION['error'] = "Lỗi không xác định: ";
+         exit;
 }
 
 } 
