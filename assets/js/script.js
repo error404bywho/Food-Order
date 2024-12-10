@@ -129,3 +129,35 @@ window.addEventListener("scroll", function () {
 
     }
 })
+
+
+/**
+ * Payment Change Tab
+ */
+
+const tabBtn = document.querySelectorAll("button[data-tab-btn]");
+
+const allTab = document.querySelectorAll("[data-payment-tab]");
+
+tabBtn.forEach(activeBtn => {
+    activeBtn.addEventListener("click" ,() => {
+        tabBtn.forEach(button => {button.classList.remove("active")});
+        allTab.forEach(tab => {tab.classList.remove("active")});
+        activeBtn.classList.add("active");
+        document.querySelector(`[data-payment-tab="${activeBtn.dataset.tabBtn}"]`).classList.add("active");
+
+        const icon = activeBtn.querySelector("ion-icon[data-checkmark-circle]");
+        if (icon) {
+            icon.setAttribute("name", "checkmark-circle");
+        }
+
+        tabBtn.forEach(btn => {
+            if (btn !== activeBtn) {
+                const icon = btn.querySelector("ion-icon[data-checkmark-circle]");
+                if (icon) {
+                    icon.setAttribute("name", "checkmark-circle-outline");
+                }
+            }
+        })
+    })
+})
