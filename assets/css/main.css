@@ -1349,7 +1349,7 @@ textarea.input-field {
   width: 100%;
   display: flex;
   align-items: center;
-  padding: 15px 30px;
+  padding: 15px 20px;
   gap: 20px;
   cursor: pointer;
 }
@@ -1460,6 +1460,9 @@ textarea.input-field {
 
 .product-quantity button:active,
 .product-item .item-remove-btn:active { transform: scale(0.95); } 
+
+.cart .cart-item-box,
+.cart .total-wrapper { padding: 15px 20px; }
 
 
 
@@ -1684,6 +1687,20 @@ textarea.input-field {
 
   .banner-sm .banner-text { margin-block: 0; }
 
+  /**
+  * SHOPPING CART
+  */
+
+
+  .payment-method {
+    display: flex;
+  }
+
+  .payment-form .payment-tab button {
+    min-width: 30%;
+    margin-inline: auto;
+  }
+
 
   /**
   * FOOTER  
@@ -1692,6 +1709,8 @@ textarea.input-field {
   .input-wrapper { grid-template-columns: 1fr 1fr; }
 
   .footer-form { padding: 0; }
+
+
 
 }
 
@@ -1825,6 +1844,24 @@ textarea.input-field {
    :is(.banner-md, .banner-sm) .banner-title, .banner-lg .banner-subtitle 
    { --fs-2: 3.2rem;}
 
+  /**
+  * SHOPPING CART
+  */
+
+  .cart {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .total-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .amount-wrapper { margin-block-start: auto 0; }
+
+
+
 
   /**
    * FOOTER
@@ -1901,6 +1938,26 @@ textarea.input-field {
    */
 
    .banner-md .banner-item-content { left: 55%; }
+
+  /**
+  * SHOPPING CART
+  */
+
+  .section-wrapper { display: flex; }
+
+  .checkout {
+    order: -1;
+    width: 70%;
+  }
+
+  .cart {
+    grid-template-columns: none;
+  }
+
+  .discount-token { margin-block: 0; }
+
+  .amount-wrapper { margin-block: 0; }
+
 
   /**
    * FOOTER
