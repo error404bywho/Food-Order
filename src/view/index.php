@@ -849,7 +849,7 @@
             </li>
         </ul>
 
-        <form action="" class="footer-form">
+        <!-- <form action="" class="footer-form">
 
             <p class="footer-list-title">Book a Table</p>
 
@@ -883,8 +883,8 @@
 
             <button type="submit" class="btn btn-fill">Book a Table</button>
 
-        </form>
-
+        </form> -->
+ 
     </div>
 </div>
 
