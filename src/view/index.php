@@ -26,7 +26,7 @@
 </head>
 <body>
 
-    <!-- 
+     <!-- 
      - #HEADER
      -->
 
@@ -909,7 +909,7 @@
 
         </article>
     </main>
-    <!-- 
+     <!-- 
      - Custom JS link
      -->
      <script src="../../assets/js/script.js"></script>
