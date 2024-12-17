@@ -5,7 +5,8 @@ include_once '../model/Users.php';
 
 if(isset($_POST['Sign_Up'])){
 
-$Email = $_POST['Email'];  //normal
+$Email = $_POST['Email'];  //normal 
+ 
 // $Id = hashToElevenDigitId($Email); // hash id
 $Username = $_POST['Username']; //normal
 $Password = hashPassword($_POST['Password']); // hash password
@@ -27,7 +28,8 @@ $status = 'active';     //normal
 $result = Insert_User($pdo,$Email,$Password,$Full_Name,$Phone,$Birthday,$Address,$role,$status);
 switch ($result) {
     case '200': // ok
-
+        $Email = caesarEncode($Email,3);
+        $Full_Name = caesarDecode($$Full_Name,3);
         Header("Location: Confirm_Email.php?email=$Email&&full_name=$Full_Name"); 
         break;
     case '400':
@@ -38,8 +40,8 @@ switch ($result) {
     case '23000':   //trung gmail,id
         // Header("Location: ../view/index.php");
          $_SESSION['error'] = "Email Exists please try again !";
-        //  Header("Location: ../view/sign_up.php"); 
-         echo $_SESSION['error'];
+        Header("Location: ../view/sign_up.php"); 
+        //  echo $_SESSION['error'];
          break;
     case '42000':
         $_SESSION['error'] = "Invalid character, please try again !";

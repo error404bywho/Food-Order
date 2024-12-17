@@ -1,8 +1,8 @@
--- DROP DATABASE IF EXISTS `ecommerce`;
+DROP DATABASE IF EXISTS `ecommerce`;
 -- Xóa database nếu tồn tại
 -- Tạo database mới
--- CREATE DATABASE `ecommerce`;
--- USE `ecommerce`;
+ CREATE DATABASE `ecommerce`;
+ USE `ecommerce`;
 
 
 -- Bảng: users (người dùng)
@@ -15,10 +15,7 @@ CREATE TABLE `users` (
     `phone` VARCHAR(20),
     `birthday` DATE,
     `address` TEXT,
-    `balance` DECIMAL(10, 2) DEFAULT 0.00,
     `role` ENUM('user', 'admin') DEFAULT 'user',
-    `dateCreated` DATETIME DEFAULT CURRENT_TIMESTAMP,
-    `dateUpdated` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     `status` ENUM('active', 'inactive') DEFAULT 'active'
 );
 ALTER TABLE `users` AUTO_INCREMENT = 1000;

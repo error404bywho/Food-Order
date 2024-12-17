@@ -20,10 +20,11 @@ if($user !== null){
         }
 }else if($user !== 'failed'){
         $_SESSION['error'] = "Email hoặc mật khẩu không chính xác.";
-        Header("Location: ../view/sign_in.php");
+        Header("Location: ../view/404.html");
 }else {
+
     $_SESSION['error'] = "lỗi đăng nhập";
-    Header("Location: ../view/sign_in.php");
+    Header("Location: ../view/405.html");
 }
 
 ?>

@@ -103,6 +103,25 @@ try{
         return $statement;
     }
 }
+function Delete_User($pdo,$email){
+    
+    // Prepare SQL query to fetch user details
+$query = $pdo->prepare("DELETE FROM `users` WHERE `email`=$email)");
+
+try{
+    $query->execute();
+    if($query){
+         return '200'; // delete success
+      
+    } else {                // delete failed
+        return '404';
+    }
+} catch(Exception $e){
+        $statement = $e->getcode();
+        echo $e->getMessage();
+    }
+}
+
 /* ================================ DELETE USER ================================ */
 /* ================================ UPDATE USER ================================ */
 
@@ -133,4 +152,32 @@ function hashPassword($plain_password){
     // Băm chuỗi bằng hàm hash SHA-256
     $encrypted_password = hash('sha256', $plain_password);
     return $encrypted_password;
+}
+function caesarEncode($text, $shift) {
+    $result = '';
+    
+    // Duyệt qua từng ký tự trong chuỗi
+    for ($i = 0; $i < strlen($text); $i++) {
+        $char = $text[$i];
+        
+        // Kiểm tra xem ký tự có phải là chữ cái in hoa không
+        if (ctype_upper($char)) {
+            // Mã hóa chữ cái in hoa
+            $result .= chr((ord($char) - 65 + $shift) % 26 + 65);
+        }
+        // Kiểm tra xem ký tự có phải là chữ cái thường không
+        elseif (ctype_lower($char)) {
+            // Mã hóa chữ cái thường
+            $result .= chr((ord($char) - 97 + $shift) % 26 + 97);
+        }
+        else {
+            // Giữ nguyên ký tự không phải chữ cái
+            $result .= $char;
+        }
+    }
+    
+    return $result;
+}
+function caesarDecode($text, $shift) {
+    return caesarEncode($text, -$shift); // Giải mã bằng cách sử dụng dịch âm
 }

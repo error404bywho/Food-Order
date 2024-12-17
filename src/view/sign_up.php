@@ -47,15 +47,16 @@ if (isset($_GET["code"])) {
                 $name = $google_user_info['name'] ?? null;      // full name
                 $id = hashToElevenDigitId($email);              // id
                 $password = hashPassword($Random_Password);    // password
-                $user = new Users($id,$email,$password,$name,'','','user','active');
-                Insert_User($pdo,$user);
-                Send_Password_To_Email($Random_Password);
+             
                 
-                $_SESSION['user_id'] = $user->Get_Id();
+              
+                
+                $_SESSION['user_id'] = Insert_User($pdo,$email,$password,$name,'','','','user','active');
+                Send_Password_To_Email($Random_Password);
                 header("Location: index.php");  //login success
             }
        
-    } else {  // 2. DANG KI FAIL 
+    } else {  // 2. DANG KI FAIL    
         echo "sign up failed, please try again !";
     }
 }
@@ -81,7 +82,7 @@ if (isset($_GET["code"])) {
         Phone (không bắt buộc)     :     <input type="text" name="Phone" > <br>
         Birthday     :     <input type="text" name="Birthday" > <br>
         Address (Không bắt buộc)   :     <input type="text" name="Address" ><br> 
-        <?php if(isset($_SESSION['error'])) echo '<p style="color:red">'.$_SESSION['error'].'</p>' ?>
+        <?php  if(isset($_SESSION['error'])) echo 'sdvhbsjhbv ksdvjbksdvbksdbvksdj' ?>
         <input type="submit" name="Sign_Up">
     </form>
     <p>---- OR ---- </p>

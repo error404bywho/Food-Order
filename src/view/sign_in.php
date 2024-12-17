@@ -28,7 +28,7 @@ session_destroy();
     <input type="submit" name = "Sign_In" value="Sign In">
 </form>
 <p>------- OR -------</p>
-<p>haven't have account ? Sign up here !</p>
+<p>doesn't have account ? Sign up here !</p>
 <a href="sign_up.php"><button>sign up</button></a>
     
 <!-- =========================LOGIN FORM========================= -->

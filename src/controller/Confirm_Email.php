@@ -10,12 +10,16 @@ require '../../vendor_email/PHPMailer/src/SMTP.php';
 
 
 include '../model/Users.php';
+include '../controller/inc/function_users.php';
 ?>
 
 <?php
 
-$SendToEmail = $_GET['email'] ; 
-$WithFullName = $_GET['full_name'] ; 
+$Email = $_GET['email'] ; 
+$Full_Name = $_GET['full_name'] ; 
+
+$SendToEmail =caesarEncode($Email,-3);
+$WithFullName = caesarDecode($$Full_Name,-3);
 
 $Code = rand(343434,987654);
 
