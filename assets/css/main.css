@@ -1263,6 +1263,11 @@ textarea.input-field {
 
 .copyright-link:is(:hover, :focus) { text-decoration: underline; }
 
+input[type="date"]::before 
+{ color: #aaa; content: attr(placeholder); font-size: var(--fs-4); } 
+input[type="date"]:focus::before,
+input[type="date"]:valid::before { content: ''; }
+
 
  /*-----------------------------------*\
    #SHOPPING CART
@@ -1312,6 +1317,7 @@ textarea.input-field {
   color: var(--onyx);
   border-bottom: 1px solid var(--gainsboro);
   gap: 20px;
+  padding-block: 10px 30px;
 }
 
 .heading ion-icon {font-size: 40px;}
@@ -1464,6 +1470,10 @@ textarea.input-field {
 .cart .cart-item-box,
 .cart .total-wrapper { padding: 15px 20px; }
 
+.product-quantity ion-icon,
+.payment-method ion-icon,
+.payment-method span { color: var(--black); }
+
 
 
 
@@ -1494,7 +1504,7 @@ textarea.input-field {
   transform: translateY(-10px);
 }
 
-.back-top-btn:hover { background-color: var(--black_90); }
+.back-top-btn:active { background-color: var(--black_90); }
 
 /**
 * responsive with screen more than 550px  
