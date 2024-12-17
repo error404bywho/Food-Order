@@ -278,34 +278,34 @@
                     <ul class="food-menu-list">
 
                         <?php
-                        for($i=0;$i<100;$i++){
-                            echo '
-                            <li class="food-menu-card">
-                                <div class="card-banner">
-                                    <img src="../../assets/images/food-menu-1.png" width="300" height="300"
-                                    loading="lazy" class="w-100" alt="">
-                                    <div class="badge"> -15%</div>
-<a href="test.php?id='.$i.'"><button class="btn btn-fill food-menu-btn">Order Now</button></a>
-                                </div>
-                                <div class="wrapper">
-                                    <p class="category">Chicken</p>
-                                    <div class="rating-wrapper">
-                                        <ion-icon name="star"></ion-icon>
-                                        <ion-icon name="star"></ion-icon>
-                                        <ion-icon name="star"></ion-icon>
-                                        <ion-icon name="star"></ion-icon>
-                                        <ion-icon name="star"></ion-icon>
-                                    </div>
-                                </div>
-                                <h3 class="h3 card-title">Fried Chicken Unlimited '.$i.'</h3>
-                                <div class="price-wrapper">
-                                    <p class="price-text">Price</p>
-                                    <data value="12.00" class="price">12.00$</data>
-                                    <del class="del">18.00$</del>
-                                </div>
-                            </li>
-                            ';
-                        }
+//                         for($i=0;$i<100;$i++){
+//                             echo '
+//                             <li class="food-menu-card">
+//                                 <div class="card-banner">
+//                                     <img src="../../assets/images/food-menu-1.png" width="300" height="300"
+//                                     loading="lazy" class="w-100" alt="">
+//                                     <div class="badge"> -15%</div>
+// <a href="test.php?id='.$i.'"><button class="btn btn-fill food-menu-btn">Order Now</button></a>
+//                                 </div>
+//                                 <div class="wrapper">
+//                                     <p class="category">Chicken</p>
+//                                     <div class="rating-wrapper">
+//                                         <ion-icon name="star"></ion-icon>
+//                                         <ion-icon name="star"></ion-icon>
+//                                         <ion-icon name="star"></ion-icon>
+//                                         <ion-icon name="star"></ion-icon>
+//                                         <ion-icon name="star"></ion-icon>
+//                                     </div>
+//                                 </div>
+//                                 <h3 class="h3 card-title">Fried Chicken Unlimited '.$i.'</h3>
+//                                 <div class="price-wrapper">
+//                                     <p class="price-text">Price</p>
+//                                     <data value="12.00" class="price">12.00$</data>
+//                                     <del class="del">18.00$</del>
+//                                 </div>
+//                             </li>
+//                             ';
+//                         }
                         ?>
 
                         <li class="food-menu-card">
