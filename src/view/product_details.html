@@ -41,8 +41,8 @@
         <div class="nav-wrapper" >
             <div class="container">
                 <h1 class="h1">
-                    <a href="./index.html" class="logo">M<span class="span">EAT</span></a>
-                    <a href="./index.html" class="logo">EAT<span class="span">ER</span></a>
+                    <a href="./index.php" class="logo">M<span class="span">EAT</span></a>
+                    <a href="./index.php" class="logo">EAT<span class="span">ER</span></a>
                 </h1>
                 <div class="menu-wrapper">
                     <button class="nav-open-btn" aria-label="Open Menu" data-nav-toggle-btn>
@@ -52,22 +52,22 @@
                 <nav class="navbar" data-navbar>
                     <ul class="navbar-list">
                         <li>
-                            <a href="./index.html" class="navbar-link active">Home</a>
+                            <a href="./index.php" class="navbar-link active">Home</a>
                         </li>
                         <li>
-                            <a href="./index.html" class="navbar-link">About</a>
+                            <a href="./index.php" class="navbar-link">About</a>
                         </li>
                         <li>
-                            <a href="./index.html" class="navbar-link">Shop</a>
+                            <a href="./index.php" class="navbar-link">Shop</a>
                         </li>
                         <li>
-                            <a href="./index.html" class="navbar-link">Blog</a>
+                            <a href="./index.php" class="navbar-link">Blog</a>
                         </li>
                         <li>
-                            <a href="./index.html" class="navbar-link">Products</a>
+                            <a href="./index.php" class="navbar-link">Products</a>
                         </li>
                         <li>
-                            <a href="./index.html" class="navbar-link">Contact</a>
+                            <a href="./index.php" class="navbar-link">Contact</a>
                         </li>
                     </ul>
                     <div class="navbar-wrapper">
@@ -224,6 +224,31 @@
                         <a href="./cart.html" class="panel-btn btn btn-fill">View Cart</a>
                     </div> 
                 </div>
+                <div class="user-wrapper">
+                    <button class="header-action-btn user-profile" aria-label="Open user" data-panel-btn="user">
+                        <ion-icon class="user-outline" name="person-circle-outline"></ion-icon>
+                        <ion-icon class="user" name="person-circle"></ion-icon>
+                    </button>
+                    <div class="side-panel user-profile" data-side-panel="user">
+
+                        <div class="avatar-wrapper">
+
+                            <figure>
+                                <img src="../../assets/images/profile.jpg" alt="" class="banner-img" width="40" height="40">
+                            </figure>
+
+                            <h3 class="username">Bảo Hồ</h3>
+
+                        </div>
+
+                        <a href="" class="user-profile-wrapper">
+                            <ion-icon name="reader"></ion-icon>
+                            <p class="banner-subtitle">Manage my account</p>
+                        </a>
+                        <a href="./cart.html" class="panel-btn btn btn-fill">Log Out</a>
+                    </div> 
+                </div>
+                
             </div>
             </div>
         </div>
@@ -234,13 +259,52 @@
     <main>
         <article>
 
+            <div class="link-wrapper">
+                <a href="" class="link">home</a>
+                <a href="" class="link">product</a>
+                <a href="" class="link">Seafood 1</a>
+            </div>
+
            <!--
            - #PRODUCT 
            -->
 
            <section class="section product">
             <div class="container">
-                
+                <figure class="product-image">
+                    <img src="../../assets/images/food-menu-1.png" 
+                    width="400" height="400" loading="lazy" class="w-100" alt="">
+                </figure>
+                <div class="product-content">
+                    <h2 class="product-title">
+                        Seafood 1
+                    </h2>
+                    <div class="price-wrapper">
+                        <p class="price-text">Price</p>
+
+                        <data value="12.00" class="price">12.00$</data>
+
+                        <del class="del">18.00$</del>
+                    </div>
+                    <p class="product-text">
+                        Shrimp, crab, lobster, clams, mussels, scallops, squid, 
+                        fish fillets, corn, potatoes, garlic, onions, parsley, lemon, 
+                        and a mix of seasonings like Old Bay, garlic butter, paprika, 
+                        and chili powder.
+                    </p>
+                    <div class="product-quantity">
+                        <button id="decrease">
+                            <ion-icon name="remove-outline"></ion-icon>
+                        </button>
+
+                        <span id="quantity">1</span>
+
+                        <button id="increase">
+                            <ion-icon name="add-outline"></ion-icon>
+                        </button>
+                    </div>
+                    <button class="btn btn-fill">Order Now</button>
+                </div>
             </div>
            </section>
 

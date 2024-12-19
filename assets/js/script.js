@@ -34,7 +34,7 @@ searchBtn.addEventListener("click", () => {
 });
 
 /**
- * Wishlist and Cart toggle
+ * Wishlist, Cart and User toggle
  */
 const panelBtns = document.querySelectorAll("[data-panel-btn]");
 const sidePanels = document.querySelectorAll("[data-side-panel]");
