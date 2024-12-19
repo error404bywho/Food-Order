@@ -550,7 +550,8 @@ session_start();
                             <div class="banner-card">
                                 <img src="../../assets/images/banner-4.jpg" width="550" height="220" 
                                 loading="lazy" alt="Tasty Buzzed Pizza" class="banner-img">
-
+ <!-- #region 
+  -->
                                 <div class="banner-item-content">
                                     <p class="banner-subtitle">more sale for best customers !</p>
 
