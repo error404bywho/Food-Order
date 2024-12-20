@@ -7,10 +7,11 @@ include_once '../model/Users.php';
 $email = $_POST['email'];
 $password = $_POST['password'];
 
-$user = Check_Login($pdo,$email,$password);
+$user = Check_Login($email,$password);
 if($user !== null){
     if($user->Get_Role() === 'admin'){
         $_SESSION['session_id'] = $user->get_ID();
+        $_SESSION['address'] = $user->get_ID();
         Header("Location: ../view/admin.php");
         exit; 
     } else {

@@ -9,8 +9,8 @@
 <div class="nav-wrapper" >
     <div class="container">
         <h1 class="h1">
-            <a href="./index.html" class="logo">M<span class="span">EAT</span></a>
-            <a href="./index.html" class="logo">EAT<span class="span">ER</span></a>
+            <a href="./index.php" class="logo">M<span class="span">EAT</span></a>
+            <a href="./index.php" class="logo">EAT<span class="span">ER</span></a>
         </h1>
         <div class="menu-wrapper">
             <button class="nav-open-btn" aria-label="Open Menu" data-nav-toggle-btn>
@@ -20,22 +20,16 @@
         <nav class="navbar" data-navbar>
             <ul class="navbar-list">
                 <li>
-                    <a href="./index.html" class="navbar-link active">Home</a>
+                    <a href="./index.php" class="navbar-link">Home</a>
                 </li>
                 <li>
-                    <a href="./index.html" class="navbar-link">About</a>
+                    <a href="./product.php" class="navbar-link">Products</a>
                 </li>
                 <li>
-                    <a href="./index.html" class="navbar-link">Shop</a>
+                    <a href="#footer" class="navbar-link">About</a>
                 </li>
                 <li>
-                    <a href="./index.html" class="navbar-link">Blog</a>
-                </li>
-                <li>
-                    <a href="./index.html" class="navbar-link">Products</a>
-                </li>
-                <li>
-                    <a href="./index.html" class="navbar-link">Contact</a>
+                    <a href="#footer" class="navbar-link">Contact</a>
                 </li>
             </ul>
             <?php 
@@ -142,7 +136,7 @@
                     <li class="panel-item">
                         <a href="./product-details.html" class="panel-card">
                             <figure class="item-banner">
-                                <img src="../../assets/images/food-menu-1.png" width="46" height="46" loading="lazy" alt="seafood 1">
+                                <img src="../../assets/images/food-menu-1.png" width="46" height="46" loading="lazy" alt="thumbnail_food">
                             </figure>
     
                             <div>
@@ -194,7 +188,7 @@
                         696$
                     </data>
                 </div>
-                <a href="./cart.html" class="panel-btn btn btn-fill">View Cart</a>
+                <a href="./cart.php" class="panel-btn btn btn-fill">View Cart</a>
             </div> 
         </div>
     </div>

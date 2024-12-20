@@ -1,8 +1,8 @@
 <!-- ================================== REGISTER BY GOOGLE ================================== -->
 <?php
 session_start();
-include '../model/Users.php';
-include '../controller/inc/conn.php';
+include_once '../model/Users.php';
+include_once '../controller/inc/conn.php';
 include_once '../controller/inc/function_users.php';
 include_once '../controller/inc/conn.php';
 require "2-google.php";
@@ -33,7 +33,7 @@ if (isset($_GET["code"])) {
         $google_user_info = $oauth2->userinfo->get();
         $email = $google_user_info['email'] ?? null;    // email
 
-        $user = Check_Exist_By_Email($pdo,$email);
+        $user = Check_Exist_By_Email($email);
         // 1.1 DANG KI DA TON TAI TAI KHOAN ==> KIEM TRA DB LAY RA NGUOI DUNG THEO EMAIL VA DANG NHAP
         if($user){ 
                 $_SESSION['user_id'] = $user->Get_Id();
@@ -51,7 +51,7 @@ if (isset($_GET["code"])) {
                 
               
                 
-                $_SESSION['user_id'] = Insert_User($pdo,$email,$password,$name,'','','','user','active');
+                $_SESSION['user_id'] = Insert_User($email,$password,$name,'','','','user','active');
                 Send_Password_To_Email($Random_Password);
                 header("Location: index.php");  //login success
             }

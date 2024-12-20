@@ -9,8 +9,8 @@ require '../../vendor_email/PHPMailer/src/PHPMailer.php';
 require '../../vendor_email/PHPMailer/src/SMTP.php';
 
 
-include '../model/Users.php';
-include '../controller/inc/function_users.php';
+include_once '../model/Users.php';
+include_once '../controller/inc/function_users.php';
 ?>
 
 <?php

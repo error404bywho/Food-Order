@@ -25,7 +25,7 @@ $role = 'user';         //normal
 $status = 'active';     //normal
 
 // $user = new Users($Email,$Password,$Full_Name,$Phone,$Address,$role,$status);
-$result = Insert_User($pdo,$Email,$Password,$Full_Name,$Phone,$Birthday,$Address,$role,$status);
+$result = Insert_User($Email,$Password,$Full_Name,$Phone,$Birthday,$Address,$role,$status);
 switch ($result) {
     case '200': // ok
         $Email = caesarEncode($Email,3);

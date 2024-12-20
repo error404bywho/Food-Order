@@ -6,6 +6,7 @@ class Category {
     private $Image;
     private $Active;
 
+    
     public function __construct(
         $Id = "null",
         $Name = "null",

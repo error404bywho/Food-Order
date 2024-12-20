@@ -1,7 +1,13 @@
+<?php session_start();?>
+
+<?php
+include_once '../model/Product.php';
+include_once '../controller/inc/function_products.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
-    
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,207 +36,7 @@
      - #HEADER
      -->
 
-     <header class="header" data-header>
-
-        <div class="top-bar">
-            <div class="container">
-                <p>Free shiping for all order above 50$</p>
-            </div>
-        </div>
-        
-        <div class="nav-wrapper" >
-            <div class="container">
-                <h1 class="h1">
-                    <a href="./index.html" class="logo">M<span class="span">EAT</span></a>
-                    <a href="./index.html" class="logo">EAT<span class="span">ER</span></a>
-                </h1>
-                <div class="menu-wrapper">
-                    <button class="nav-open-btn" aria-label="Open Menu" data-nav-toggle-btn>
-                        <ion-icon class="menu-icon" name="menu-outline"></ion-icon>
-                        <ion-icon class="close-icon" name="close-outline"></ion-icon>
-                    </button>
-                <nav class="navbar" data-navbar>
-                    <ul class="navbar-list">
-                        <li>
-                            <a href="./index.html" class="navbar-link active">Home</a>
-                        </li>
-                        <li>
-                            <a href="./index.html" class="navbar-link">About</a>
-                        </li>
-                        <li>
-                            <a href="./index.html" class="navbar-link">Shop</a>
-                        </li>
-                        <li>
-                            <a href="./index.html" class="navbar-link">Blog</a>
-                        </li>
-                        <li>
-                            <a href="./index.html" class="navbar-link">Products</a>
-                        </li>
-                        <li>
-                            <a href="./index.html" class="navbar-link">Contact</a>
-                        </li>
-                    </ul>
-                    <div class="navbar-wrapper">
-                        <a href="sign_in.php" class="btn btn-fill">Login</a>
-                    </div>
-                </nav>
-                </div>
-
-            <div class="header-action">
-
-                <div class="search-wrapper" data-search-wrapper>
-                    <button class="header-action-btn" data-search-btn>
-                        <ion-icon name="search-outline" class="search-icon"></ion-icon>
-                    </button>
-
-                    <div class="input-wrapper">
-                        <input type="search" name="search" placeholder="Search here" class="search-input">
-
-                        <button class="search-submit" aria-label="Submit search">
-                            <ion-icon name="search-outline"></ion-icon>
-                        </button>
-                    </div>
-                </div>
-                <div class="whishlist-wrapper">
-                    <button class="header-action-btn whishlist" aria-label="Open whishlist" data-panel-btn="whishlist">
-                        <ion-icon class="heart-outline" name="heart-outline"></ion-icon>
-                        <ion-icon class="heart" name="heart"></ion-icon>
-                        <data value="3" class="btn-badge">03</data>
-                    </button>
-                    <div class="side-panel whishlist" data-side-panel="whishlist">
-                        <ul class="panel-list">
-                            <li class="panel-item">
-                                <a href="./product-details.html" class="panel-card">
-                                    <figure class="item-banner">
-                                        <img src="../../assets/images/food-menu-1.png" width="46" height="46" loading="lazy" alt="seafood 1">
-                                    </figure>
-            
-                                    <div>
-                                        <p class="item-title">Seafood 1</p>
-                                        <span class="item-value">12$</span>
-                                        <span class="item-amount">x1</span>
-                                    </div>
-                                </a>
-                                <button class="item-remove-btn">
-                                    <ion-icon name="close-outline"></ion-icon>
-                                </button>
-                            </li>
-                            <li class="panel-item">
-                                <a href="./product-details.html" class="panel-card">
-                                    <figure class="item-banner">
-                                        <img src="../../assets/images/food-menu-2.png" width="46" height="46" loading="lazy" alt="meat 1">
-                                    </figure>
-            
-                                    <div>
-                                        <p class="item-title">Meat 1</p>
-                                        <span class="item-value">10$</span>
-                                        <span class="item-amount">x1</span>
-                                    </div>
-                                </a>
-                                <button class="item-remove-btn">
-                                    <ion-icon name="close-outline"></ion-icon>
-                                </button>
-                            </li>
-                            <li class="panel-item">
-                                <a href="./product-details.html" class="panel-card">
-                                    <figure class="item-banner">
-                                        <img src="../../assets/images/food-menu-3.png" width="46" height="46" loading="lazy" alt="fried chicken 1">
-                                    </figure>
-            
-                                    <div>
-                                        <p class="item-title">Fried Chicken 1</p>
-                                        <span class="item-value">9.3$</span>
-                                        <span class="item-amount">x1</span>
-                                    </div>
-                                </a>
-                                <button class="item-remove-btn">
-                                    <ion-icon name="close-outline"></ion-icon>
-                                </button>
-                            </li>
-                        </ul>
-                        <div class="subtotal">
-                            <p class="subtotal-text">Subtotal:</p>
-                            <data value="696" class="subtotal-value">
-                                696$
-                            </data>
-                        </div>
-                        <a href="./whishlist.html" class="panel-btn btn btn-fill">View Whishlist</a>
-                    </div>
-                </div>
-                <div class="cart-wrapper">
-                    <button class="header-action-btn cart" aria-label="Open shopping cart" data-panel-btn="cart">
-                        <ion-icon class="basket-outline" name="basket-outline"></ion-icon>
-                        <ion-icon class="basket" name="basket"></ion-icon>
-    
-                        <data value="2" class="btn-badge">02</data>
-                    </button>
-                    <div class="side-panel cart" data-side-panel="cart">
-                        <ul class="panel-list">
-                            <li class="panel-item">
-                                <a href="./product-details.html" class="panel-card">
-                                    <figure class="item-banner">
-                                        <img src="../../assets/images/food-menu-1.png" width="46" height="46" loading="lazy" alt="seafood 1">
-                                    </figure>
-            
-                                    <div>
-                                        <p class="item-title">Seafood 1</p>
-                                        <span class="item-value">12$</span>
-                                        <span class="item-amount">x1</span>
-                                    </div>
-                                </a>
-                                <button class="item-remove-btn">
-                                    <ion-icon name="close-outline"></ion-icon>
-                                </button>
-                            </li>
-                            <li class="panel-item">
-                                <a href="./product-details.html" class="panel-card">
-                                    <figure class="item-banner">
-                                        <img src="../../assets/images/food-menu-2.png" width="46" height="46" loading="lazy" alt="meat 1">
-                                    </figure>
-            
-                                    <div>
-                                        <p class="item-title">Meat 1</p>
-                                        <span class="item-value">10$</span>
-                                        <span class="item-amount">x1</span>
-                                    </div>
-                                </a>
-                                <button class="item-remove-btn">
-                                    <ion-icon name="close-outline"></ion-icon>
-                                </button>
-                            </li>
-                            <li class="panel-item">
-                                <a href="./product-details.html" class="panel-card">
-                                    <figure class="item-banner">
-                                        <img src="../../assets/images/food-menu-3.png" width="46" height="46" loading="lazy" alt="fried chicken 1">
-                                    </figure>
-            
-                                    <div>
-                                        <p class="item-title">Fried Chicken 1</p>
-                                        <span class="item-value">9.3$</span>
-                                        <span class="item-amount">x1</span>
-                                    </div>
-                                </a>
-                                <button class="item-remove-btn">
-                                    <ion-icon name="close-outline"></ion-icon>
-                                </button>
-                            </li>
-                        </ul>
-                        <div class="subtotal">
-                            <p class="subtotal-text">Subtotal:</p>
-                            <data value="696" class="subtotal-value">
-                                696$
-                            </data>
-                        </div>
-                        <a href="./cart.html" class="panel-btn btn btn-fill">View Cart</a>
-                    </div> 
-                </div>
-            </div>
-            </div>
-        </div>
-
-    </header>
-
-
+     <?php include_once 'header.php' ?>
     <main>
         <article>
 
@@ -278,14 +84,14 @@
                     <ul class="food-menu-list">
 
                         <?php
-//                         for($i=0;$i<100;$i++){
-//                             echo '
+//                         for(VNĐi=0;VNĐi<100;VNĐi++){
+//                                 echo '
 //                             <li class="food-menu-card">
 //                                 <div class="card-banner">
 //                                     <img src="../../assets/images/food-menu-1.png" width="300" height="300"
 //                                     loading="lazy" class="w-100" alt="">
 //                                     <div class="badge"> -15%</div>
-// <a href="test.php?id='.$i.'"><button class="btn btn-fill food-menu-btn">Order Now</button></a>
+// <a href="test.php?id='.VNĐi.'"><button class="btn btn-fill food-menu-btn">Order Now</button></a>
 //                                 </div>
 //                                 <div class="wrapper">
 //                                     <p class="category">Chicken</p>
@@ -297,11 +103,11 @@
 //                                         <ion-icon name="star"></ion-icon>
 //                                     </div>
 //                                 </div>
-//                                 <h3 class="h3 card-title">Fried Chicken Unlimited '.$i.'</h3>
+//                                 <h3 class="h3 card-title">Fried Chicken Unlimited '.VNĐi.'</h3>
 //                                 <div class="price-wrapper">
 //                                     <p class="price-text">Price</p>
-//                                     <data value="12.00" class="price">12.00$</data>
-//                                     <del class="del">18.00$</del>
+//                                     <data value="12.00" class="price">12.00VNĐ</data>
+//                                     <del class="del">18.00VNĐ</del>
 //                                 </div>
 //                             </li>
 //                             ';
@@ -334,9 +140,9 @@
                             <div class="price-wrapper">
                                 <p class="price-text">Price</p>
 
-                                <data value="12.00" class="price">12.00$</data>
+                                <data value="12.00" class="price">12.00VNĐ</data>
 
-                                <del class="del">18.00$</del>
+                                <del class="del">18.00VNĐ</del>
                             </div>
                         </li>
 
@@ -366,9 +172,9 @@
                             <div class="price-wrapper">
                                 <p class="price-text">Price</p>
 
-                                <data value="12.00" class="price">12.00$</data>
+                                <data value="12.00" class="price">12.00VNĐ</data>
 
-                                <del class="del">18.00$</del>
+                                <del class="del">18.00VNĐ</del>
                             </div>
                         </li>
 
@@ -398,9 +204,9 @@
                             <div class="price-wrapper">
                                 <p class="price-text">Price</p>
 
-                                <data value="12.00" class="price">12.00$</data>
+                                <data value="12.00" class="price">12.00VNĐ</data>
 
-                                <del class="del">18.00$</del>
+                                <del class="del">18.00VNĐ</del>
                             </div>
                         </li>
 
@@ -430,9 +236,9 @@
                             <div class="price-wrapper">
                                 <p class="price-text">Price</p>
 
-                                <data value="12.00" class="price">12.00$</data>
+                                <data value="12.00" class="price">12.00VNĐ</data>
 
-                                <del class="del">18.00$</del>
+                                <del class="del">18.00VNĐ</del>
                             </div>
                         </li>
 
@@ -462,11 +268,50 @@
                             <div class="price-wrapper">
                                 <p class="price-text">Price</p>
 
-                                <data value="12.00" class="price">12.00$</data>
+                                <data value="12.00" class="price">12.00VNĐ</data>
 
-                                <del class="del">18.00$</del>
+                                <del class="del">18.00VNĐ</del>
                             </div>
                         </li>
+                        
+<?php
+$products =  Select_Product();
+if(!empty($products)){
+    foreach($products as $product){
+        echo '<li class="food-menu-card">';
+        echo '    <div class="card-banner">';
+        // echo '        <img src="../../'.$product->Get_Image().'" width="300" height="300" loading="lazy" class="w-100" alt="">';
+        echo '        <img src="../../assets/images/food-menu-1.png" width="300" height="300" loading="lazy" class="w-100" alt="">';
+        /*
+         if (is_object($product) && method_exists($product, 'Get_Image')) 
+        echo '        <img src="../../'.$product->Get_Image().'" width="300" height="300" loading="lazy" class="w-100" alt="">';
+        else 
+        $imagePath = 'assets/images/default.png'; // Đường dẫn mặc định
+        */
+        echo '        <div class="badge"> -'.($product->Get_Voucher()*100).'% </div>';
+        echo '        <a href="product_details.php"><button class="btn btn-fill food-menu-btn">detail</button></a>';
+        echo '    </div>';
+        echo '    <div class="wrapper">';
+        echo '        <p class="category">'.$product->Get_Category()->Get_Name().'</p>';
+        echo '        <div class="rating-wrapper">';
+        $stars = $product->Get_Hot();
+        for($i=0;$i<$stars;$i++)    {echo "<ion-icon name='star'></ion-icon>";}
+        echo '        </div>';
+        echo '    </div>';
+        echo '    <h3 class="h3 card-title">'.$product->Get_Name().'</h3>';
+        echo '    <div class="price-wrapper">';
+        echo '        <p class="price-text">Price</p>';
+        echo '        <data value="12.00" class="price">'.formatNumber(($product->Get_Price() - $product->Get_Price()*$product->Get_Voucher())).'VNĐ</data>';
+        echo '        <del class="del">'.formatNumber($product->Get_Price()).'VNĐ</del>';
+        echo '    </div>';
+        echo '</li>';
+
+    }
+}   else {
+    echo 'no products selected';
+}
+
+?>
 
                     </ul>
                 </div>
@@ -476,138 +321,7 @@
             - #FOOTER
             -->
 
-            <footer class="footer">
-
-                <div class="footer-top" style="background-image: url('../../assets/images/footer-illustration.png');">
-
-                    <div class="container">
-
-                        <div class="footer-brand">
-                            <a href="#" class="logo">M<span class="span">EAT</span></a>
-                            <a href="#" class="logo">EAT<span class="span">ER</span></a>
-    
-                            <p class="footer-text">
-                                Financial experts support or help you to to find out which way you can raise your funds more.
-                            </p>
-    
-                            <ul class="social-list">
-                                
-                                <li>
-                                    <a href="#" class="social-link">
-                                        <ion-icon name="logo-facebook"></ion-icon>
-                                    </a>
-                                </li>
-    
-                                <li>
-                                    <a href="#" class="social-link">
-                                        <ion-icon name="logo-twitter"></ion-icon>
-                                    </a>
-                                </li>
-    
-                                <li>
-                                    <a href="#" class="social-link">
-                                        <ion-icon name="logo-instagram"></ion-icon>
-                                    </a>
-                                </li>
-    
-                                <li>
-                                    <a href="#" class="social-link">
-                                        <ion-icon name="logo-pinterest"></ion-icon>
-                                    </a>
-                                </li>
-    
-                            </ul>
-
-                        </div>
-
-                        <ul class="footer-list">
-    
-                            <li>
-                                <p class="footer-list-title">Contact Info</p>
-                            </li>
-
-                            <li>
-                                <p class="footer-list-item">+1 (062) 109-9222</p>
-                            </li>
-
-                            <li>
-                                <p class="footer-list-item">baolhn.23ns@vku.udn.vn</p>
-                            </li>
-
-                            <li>
-                                <address class="footer-list-item">
-                                    Số 88, Đường Hải Vân Thượng, Phường Hòa Minh, Quận Liên Chiểu, Đà Nẵng.
-                                </address>
-                            </li>
-                        </ul>
-
-                        <ul class="footer-list">
-
-                            <li>
-                                <p class="footer-list-title">Opening Hours</p>
-                            </li>
-
-                            <li>
-                                <p class="footer-list-item">Monday-Friday: 08:00-22:00</p>
-                            </li>
-
-                            <li>
-                                <p class="footer-list-item">Tuesday 4PM: Till Mid Night</p>
-                            </li>
-
-                            <li>
-                                <p class="footer-list-item">Saturday: 10:00-16:00</p>
-                            </li>
-                        </ul>
-
-                        <form action="" class="footer-form">
-
-                            <p class="footer-list-title">Book a Table</p>
-
-                            <div class="input-wrapper">
-
-                                <input type="text" name="full_name" 
-                                required placeholder="Your Name" aria-label="Your Name"
-                                 class="input-field">
-
-                                 <input type="email" name="email address" 
-                                 required placeholder="Email" aria-label="Email"
-                                  class="input-field">
-
-                            </div>
-
-                            <div class="input-wrapper">
-                                <select name="total_person" aria-label="Total person" class="input-field">
-                                    <option value="person">Person</option>
-                                    <option value="2 person">2 Person</option>
-                                    <option value="3 person">3 Person</option>
-                                    <option value="4 person">4 Person</option>
-                                    <option value="5 person">5 Person</option>
-                                </select>
-
-                                <input type="date" name="booking_date" aria-label="Reservation date"
-                                 required class="input-field">
-
-                            </div>
-
-                            <textarea name="message" aria-label="Message" placeholder="Message" class="input-field"></textarea>
-
-                            <button type="submit" class="btn btn-fill">Book a Table</button>
-
-                        </form>
-
-                    </div>
-                </div>
-
-                <div class="footer-bottom">
-                    <div class="container">
-                        
-                        <p class="copyright-text">
-                            &copy; 2024 <a href="#" class="copyright-link">BVH</a> All Rights Reserved.
-                        </p>
-                    </div>
-                </div>
-            </footer>
+            <?php include_once 'footer.php' ?>
 
             <!-- 
             - #BACK TO TOP

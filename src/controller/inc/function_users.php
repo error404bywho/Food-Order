@@ -1,11 +1,12 @@
 <?php
+include_once 'conn.php';
 /* ================================ SELECT USER ================================ */
-function Select_User($pdo,$email){
+function Select_User($email){
 
 }
 /* ================================ CHECK LOGIN ================================ */
-function Check_Login($pdo,$email,$plain_password){
-    
+function Check_Login($email,$plain_password){
+    global $pdo;
     $password = hashPassword($plain_password);
 
     // Prepare SQL query to fetch user details
@@ -37,11 +38,11 @@ function Check_Login($pdo,$email,$plain_password){
     }catch (Exception $e) {
         error_log($e->getMessage()); // Ghi log lỗi vào file log
         $user = 'failed: ' . $e->getMessage();
-        return $user; // Trả về chi tiết lỗi (chỉ cho môi trường dev)
+        return $user; 
     }
 }
-function Check_Exist_By_Email($pdo,$Email){
-
+function Check_Exist_By_Email($Email){
+    global $pdo;
     $query = $pdo->prepare("SELECT * FROM users WHERE email = :email");
     // $query->bindParam(':email', $email);
 
@@ -72,9 +73,9 @@ function Check_Exist_By_Email($pdo,$Email){
     }
 }
 /* ================================ INSERT USER ================================ */
-function Insert_User($pdo,$email,$password,$full_Name,$phone,$birthday,$address,$role,$status){
+function Insert_User($email,$password,$full_Name,$phone,$birthday,$address,$role,$status){
      $statement = '400'; //fail
-
+     global $pdo;
     // Prepare SQL query to fetch user details
 $query = $pdo->prepare("INSERT INTO `users` (`email`, `password`, `fullname`, `phone`, `birthday`, `address`, `role`, `status`) 
 VALUES ( :email, :password, :fullname, :phone, :birthday, :address, :role, :status)");
@@ -103,8 +104,8 @@ try{
         return $statement;
     }
 }
-function Delete_User($pdo,$email){
-    
+function Delete_User($email){
+    global $pdo;
     // Prepare SQL query to fetch user details
 $query = $pdo->prepare("DELETE FROM `users` WHERE `email`=$email)");
 
