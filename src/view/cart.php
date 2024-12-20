@@ -281,7 +281,45 @@ include_once '../controller/inc/function_cart.php';
 
                         </form>
 
-                        <form action="#" class="qr payment-tab" data-payment-tab="qr"></form>
+                        <form action="#" class="qr payment-tab" data-payment-tab="qr">
+                            <figure class="qr-img-wrapper">
+                                <img src="../../assets/images/images.png" alt="" width="60"
+                                height="60" class="qr-img w-100">
+                                <button class="qr-btn btn">
+                                    <ion-icon name="download-outline"></ion-icon>
+                                        Tải ảnh QR
+                                    </button>
+                            </figure>
+
+                            <div class="qr-code-content">
+                                <span class="section-subtitle">
+                                Lưu ý: Vui lòng kiểm tra kỹ thông tin giao dịch trước khi xác nhận thanh toán bằng mã QR. 
+                                </span>
+                                <ul class="qr-wrapper">
+
+                                <li class="qr-item">
+                                    <h3 class="qr-title">Chủ tài khoản</h3>
+                                    <h3 class="qr-text">Lê Hồ Ngọc Bảo</h3>
+                                </li>
+
+                                <li class="qr-item">
+                                    <h3 class="qr-title">Số Tài Khoản</h3>
+                                    <h3 class="qr-text">123456789</h3>
+                                </li>
+
+                                <li class="qr-item">
+                                    <h3 class="qr-title">Số tiền</h3>
+                                    <h3 class="qr-text">12.000đ</h3>
+                                </li>
+
+                                <li class="qr-item">
+                                    <h3 class="qr-title">Nội dung chuyển khoản</h3>
+                                    <h3 class="qr-text">DH13396</h3>
+                                </li>
+
+                                </ul>
+                            </div>
+                        </form>
 
                         <form action="" class="COD payment-tab" data-payment-tab="COD" method="GET">
 
