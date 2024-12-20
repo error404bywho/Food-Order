@@ -144,6 +144,10 @@ include_once '../controller/inc/function_products.php';
 
                                 <del class="del">18.00VNĐ</del>
                             </div>
+                            <button class="add-to-cart btn btn-fill">
+                            <ion-icon name="cart-outline"></ion-icon>
+                                Add To Cart
+                            </button>
                         </li>
 
                         <li class="food-menu-card">

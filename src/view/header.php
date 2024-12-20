@@ -191,6 +191,27 @@
                 <a href="./cart.php" class="panel-btn btn btn-fill">View Cart</a>
             </div> 
         </div>
+        <div class="user-wrapper">
+            <button class="header-action-btn user-profile" aria-label="user-profile" data-panel-btn="user">
+            <ion-icon class="user-outline" name="person-circle-outline"></ion-icon>
+            <ion-icon class="user" name="person-circle"></ion-icon>
+            </button>
+            <div class="side-panel user-profile" data-side-panel="user">
+
+                <div class="avatar-wrapper">
+                <ion-icon name="person-circle-outline"></ion-icon>
+                <h3 class="username">Bao Ho</h3>
+                </div>
+
+                <a class="user-profile-wrapper">
+                <ion-icon name="clipboard-outline"></ion-icon>
+                <p class="">Edit your profile</p>
+               </a>
+
+               <a href="./cart.php" class="panel-btn btn btn-fill">Logout</a>
+
+            </div> 
+        </div>
     </div>
     </div>
 </div>
