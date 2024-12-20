@@ -1,7 +1,10 @@
 <?php session_start();?>
 <?php
 include_once '../model/Product.php';
+include_once '../model/Category.php';
+include_once '../model/Bill.php';
 include_once '../controller/inc/function_products.php';
+include_once '../controller/inc/function_cart.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -280,26 +283,63 @@ include_once '../controller/inc/function_products.php';
 
                         <form action="#" class="qr payment-tab" data-payment-tab="qr"></form>
 
-                        <form action="#" class="COD payment-tab" data-payment-tab="COD">
+                        <form action="" class="COD payment-tab" data-payment-tab="COD" method="GET">
 
                             <div class="address">
-                                <label for="address" class="label-default">Address</label>
+                                <label for="address" name="address" id="address" class="label-default">Address</label>
                                 <input type="text" class="input-field" required placeholder="Address"
                                  name="Address" value="">
                             </div>
 
                             <div class="phone">
-                                <label for="phone" class="label-default">Phone Number</label>
+                                <label for="phone" name="phone" class="label-default">Phone Number</label>
                                 <input type="number" class="input-field" required placeholder="Phone Number"
                                  name="Phone">
                             </div>
-
-                            <button class="btn btn-fill">
+                           
+                            <button type="submit" name="buy" class="btn btn-fill">
                                 <span class="pay-amount">Submit</span>
                             </button>
 
                         </form>
+<?php
+if(isset($_GET['buy'])){
+    /*---------------------------EDIT THIS-------------------------------------- */
+    $category  = new Category("5","chicken","assets/images/chicken/chicken.png",1);
+    
+    $product_1 = new product("1","Chicken wings","assets/img/product/chicken/chicken_wings.png","25000",null,2,5,
+    "A delicious and crispy fried chicken served with special dipping sauces, perfect for a quick meal.",$category,);
+   
+    $products = [$product_1,$product_1]; //trong giỏ hàng có 2 sản phẩm, mỗi sản phẩm có số lượng là 2
+    $VoucherCode = 0;       // giảm 10% (voucher t tự cho)
+    $id = Get_voucher_id_by_code($VoucherCode);
+    $discount = Get_voucher_discount_by_Code($VoucherCode);//lấy ra discount từ code voucher
+    $products_in_cart = $products;  //dùng tạm biến $products_in_cart danh sách sp được thêm vào giỏ hàng 
+/*---------------------------EDIT THIS-------------------------------------- */
+    $total = 0;
 
+    for($i = 0;$i<count($products_in_cart);$i++){
+        $total += $products_in_cart[$i]->Get_Price();
+    }
+    $id = rand(1,999999);
+    $totalAmount = $total;
+    $content = "bill";
+    $discountAmount = $total*$discount;
+    $FinalAmount = $total - $total*$discount;
+    $Email = $_SESSION['email'];
+    $Address = $_GET['Address'];
+    $Phone = $_GET['Phone'];
+    $idUser = $_SESSION['session_id'];
+    $idVoucher = $id;
+    $bill = new Bill($id,$Email,$Address,$Phone,$content,$totalAmount,$discountAmount,$FinalAmount,$idUser,$idVoucher,null);
+    $check = Create_Bill($bill);
+    if($check!=null){
+        echo "sdkvbjsdvjbs";
+    }else echo "NULLLLLLLLLLLLLLLLL";
+   
+    
+}
+?>
 
 
 
