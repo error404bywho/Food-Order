@@ -299,12 +299,12 @@ include_once '../controller/inc/function_cart.php';
 
                                 <li class="qr-item">
                                     <h3 class="qr-title">Chủ tài khoản</h3>
-                                    <h3 class="qr-text">Lê Hồ Ngọc Bảo</h3>
+                                    <h3 class="qr-text">Lê Đình Vũ</h3>
                                 </li>
 
                                 <li class="qr-item">
                                     <h3 class="qr-title">Số Tài Khoản</h3>
-                                    <h3 class="qr-text">123456789</h3>
+                                    <h3 class="qr-text">0905376235</h3>
                                 </li>
 
                                 <li class="qr-item">
@@ -345,12 +345,12 @@ if(isset($_GET['buy'])){
     /*---------------------------EDIT THIS-------------------------------------- */
     $category  = new Category("5","chicken","assets/images/chicken/chicken.png",1);
     
-    $product_1 = new product("1","Chicken wings","assets/img/product/chicken/chicken_wings.png","25000",null,2,5,
+    $product_1 = new product("1","Chicken wings","assets/img/product/chicken/chicken_wings.png","25000",1132005,2,5,
     "A delicious and crispy fried chicken served with special dipping sauces, perfect for a quick meal.",$category,);
    
     $products = [$product_1,$product_1]; //trong giỏ hàng có 2 sản phẩm, mỗi sản phẩm có số lượng là 2
     $VoucherCode = 0;       // giảm 10% (voucher t tự cho)
-    $id = Get_voucher_id_by_code($VoucherCode);
+    $VoucherId = Get_voucher_id_by_code($VoucherCode);//lấy ra id voucher từ code voucher
     $discount = Get_voucher_discount_by_Code($VoucherCode);//lấy ra discount từ code voucher
     $products_in_cart = $products;  //dùng tạm biến $products_in_cart danh sách sp được thêm vào giỏ hàng 
 /*---------------------------EDIT THIS-------------------------------------- */
@@ -368,14 +368,12 @@ if(isset($_GET['buy'])){
     $Address = $_GET['Address'];
     $Phone = $_GET['Phone'];
     $idUser = $_SESSION['session_id'];
-    $idVoucher = $id;
+    $idVoucher = $VoucherId;
     $bill = new Bill($id,$Email,$Address,$Phone,$content,$totalAmount,$discountAmount,$FinalAmount,$idUser,$idVoucher,null);
     $check = Create_Bill($bill);
-    if($check!=null){
-        echo "sdkvbjsdvjbs";
-    }else echo "NULLLLLLLLLLLLLLLLL";
-   
-    
+    unset($_GET['buy']);
+    // echo $bill->__toString();
+    echo "pay successfully";
 }
 ?>
 

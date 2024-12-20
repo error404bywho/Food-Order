@@ -18,11 +18,11 @@ $query = $pdo->prepare("SELECT discountValue FROM voucher WHERE code = $voucherC
 }
 function Get_voucher_id_by_code($voucherCode){
     global $pdo;
-    $query = $pdo->prepare("SELECT discountValue FROM voucher WHERE code = $voucherCode");
+    $query = $pdo->prepare("SELECT id FROM voucher WHERE code = $voucherCode");
         try{
             $query->execute();    
             $result = $query->fetch();
-            $voucher = $result['discountValue'];
+            $voucher = $result['id'];
             return $voucher;  
         }catch (Exception $e){
             return 0;
@@ -30,7 +30,6 @@ function Get_voucher_id_by_code($voucherCode){
     }
     function Create_Bill($bill) {
         global $pdo;
-    
         $query = $pdo->prepare("INSERT INTO `bill` (`id`, `email`, `address`, `phone`, `content`, `totalAmount`, `discountAmount`, `finalAmount`, `idUser`, `idVoucher`, `dateCreated`) 
                                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, current_timestamp())");
         try {
@@ -47,7 +46,13 @@ function Get_voucher_id_by_code($voucherCode){
                 $bill->Get_IdUser(),
                 $bill->Get_IdVoucher()
             ]);
-    
+            /*
+            
+    INSERT INTO `bill` (`id`, `email`, `address`, `phone`, `content`, `totalAmount`, 
+                        `discountAmount`, `finalAmount`, `idUser`, `idVoucher`, `dateCreated`) 
+    VALUES ('1', 'connguathanhtroia@gmail.com', 'djknvj', '0764524805', 'dfgbdfb', '10',
+             '0.1', '9', '1006', '2', current_timestamp())
+            */
             // Trả về ID của bản ghi vừa thêm (nếu cần)
             return $pdo->lastInsertId();
         } catch (Exception $e) {

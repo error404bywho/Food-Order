@@ -11,12 +11,13 @@ $user = Check_Login($email,$password);
 if($user !== null){
     if($user->Get_Role() === 'admin'){
         $_SESSION['session_id'] = $user->get_ID();
-        $_SESSION['email'] = $user->Get_Email();
+        $_SESSION['email'] = $email;
         Header("Location: ../view/admin.php");
         exit; 
     } else {
         // Dieu huong cho user
         $_SESSION['session_id'] = $user->get_ID();
+        $_SESSION['email'] = $email;
         Header("Location: ../view/index.php");
         }
 }else if($user !== 'failed'){

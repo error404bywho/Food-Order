@@ -208,7 +208,7 @@
                 <p class="">Edit your profile</p>
                </a>
 
-               <a href="./cart.php" class="panel-btn btn btn-fill">Logout</a>
+               <a href="./sign_in.php" class="panel-btn btn btn-fill">Logout</a>
 
             </div> 
         </div>
