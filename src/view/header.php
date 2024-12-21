@@ -52,6 +52,7 @@
                 </button>
             </div>
         </div>
+<<<<<<< HEAD
         <div class="whishlist-wrapper">
             <button class="header-action-btn whishlist" aria-label="Open whishlist" data-panel-btn="whishlist">
                 <ion-icon class="heart-outline" name="heart-outline"></ion-icon>
@@ -71,6 +72,9 @@
                 <a href="./whishlist.html" class="panel-btn btn btn-fill">View Whishlist</a>
             </div>
         </div>
+=======
+        
+>>>>>>> 5e7ee2d9 (Màn hình sau khi thanh toán bằng qr)
         <div class="cart-wrapper">
             <button class="header-action-btn cart" aria-label="Open shopping cart" data-panel-btn="cart">
                 <ion-icon class="basket-outline" name="basket-outline"></ion-icon>
