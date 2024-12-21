@@ -14,6 +14,8 @@ class Bill
     private $IdVoucher;
     private $DateCreated;
 
+    private $payment_status;
+
     public function __construct(
         $Id = null,
         $Email = null,
@@ -25,7 +27,8 @@ class Bill
         $FinalAmount = null,
         $IdUser = null,
         $IdVoucher = null,
-        $DateCreated = null
+        $DateCreated = null,
+        $payment_status = null
     ) {
         $this->Id = $Id;
         $this->Email = $Email;
@@ -38,8 +41,17 @@ class Bill
         $this->IdUser = $IdUser;
         $this->IdVoucher = $IdVoucher;
         $this->DateCreated = $DateCreated;
+        $this->$payment_status = $payment_status;
+    }
+    public function Get_payment_status()
+    {
+        return $this->Id;
     }
 
+    public function Set_payment_status($payment_status)
+    {
+        $this->payment_status = $payment_status;
+    }
     public function Get_Id()
     {
         return $this->Id;

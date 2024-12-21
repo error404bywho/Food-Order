@@ -135,7 +135,10 @@
                         696$
                     </data>
                 </div>
-                <a href="./cart.php" class="panel-btn btn btn-fill">View Cart</a>
+                <?php 
+               
+                ?>
+                <a href="./cart.php?id=<?php echo rand(10,99999999)?>" class="panel-btn btn btn-fill">View Cart</a>
             </div> 
         </div>
         <?php 
