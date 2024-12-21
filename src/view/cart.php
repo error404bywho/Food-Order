@@ -83,7 +83,7 @@ if(isset($_GET['buy'])){
      - #HEADER
      -->
 
-     <?php include 'header.php' ?>
+     <?php include 'header-user.php' ?>
 
 
     <main>
@@ -424,6 +424,18 @@ if(isset($_GET['buy'])){
                                 <span class="pay-amount">Submit</span>
                             </button>
 
+                        </form>
+
+                        <form action="" class="qr-success-notification" data-payment-notification>
+                            <ion-icon class="qr-success" name="checkmark-circle"></ion-icon>
+
+                            <h2 class="qr-success-title">Thanh toán thành công</h2>
+
+                            <p class="qr-text">mã số đơn hàng của bạn là 12345678</p>
+
+                            <p class="qr-text">Thời gian dự kiến giao hàng là ...</p>
+
+                            <button class="btn btn-fill">Tiếp tục mua hàng</button>
                         </form>
 
 
