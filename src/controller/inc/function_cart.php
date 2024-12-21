@@ -55,11 +55,11 @@ function Get_voucher_id_by_code($voucherCode){
              '0.1', '9', '1006', '2', current_timestamp())
             */
             // Trả về ID của bản ghi vừa thêm (nếu cần)
-            return $pdo->lastInsertId();
+            return 1;
         } catch (Exception $e) {
             // Log lỗi nếu cần thiết
             error_log("Error inserting bill: " . $e->getMessage());
-            return $e->getCode();
+            return $e->getMessage();
         }
     }
     function Create_Bill_with_QR($bill) {

@@ -19,11 +19,10 @@
 //  $result = $pdo->query("SELECT payment_status FROM bills where id={$order_id}");
  $query = $pdo->prepare("SELECT payment_status FROM bill where id={$order_id}");
 $query->execute();    
-$result = $query->fetch();
+$result = $query->fetch(PDO::FETCH_OBJ); // Trả về một đối tượng
  if($result) {
      // Lấy thông tin đơn hàng
-    $order_details = $result->fetch_object();
-    
+    $order_details = $result;
     // Trả về kết quả trạng thái đơn hàng dạng JSON. Ví dụ: {"payment_status":"Unpaid"}
     echo json_encode(['payment_status' => $order_details->payment_status]);
  } else {

@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 /* 
 File sepay_webhook.php
 File này dùng làm endpoint nhận webhook từ SePay. Mỗi khi có giao dịch SePay sẽ bắn webhook về và chúng ta sẽ lưu thông tin giao dịch vào CSDL. Đồng thời bóc tách ID đơn hàng từ nội dung thanh toán. Sau khi tìm được ID đơn hàng thì cập nhật trạng thái thanh toán của đơn hàng thành đã thanh toán (payment_status=Paid).
@@ -75,27 +75,27 @@ if (!is_numeric($pay_order_id)) {
     echo json_encode(['success' => false, 'message' => 'Order not found. Order_id ' . $pay_order_id]);
     die();
 }
-
+ //////////////////////////////////////////////////////
+ 
+ //////////////////////////////////////////////////////
+ 
 // Kiểm tra đơn hàng
 try {
-    $stmt = $pdo->prepare("INSERT INTO bill (id, finalAmount, payment_status) VALUES (:id, :finalAmount, :payment_status)");
-    $stmt->execute([
+    $stmt = $pdo->prepare("
+    UPDATE `bill` SET `payment_status` = :payment_status WHERE `id` = :id;");  
+$result =  $stmt->execute([
         ':id' => $pay_order_id,
-        ':finalAmount' => $amount_in,
         ':payment_status' => 'paid'
     ]);
-    $result = $stmt->fetch(PDO::FETCH_ASSOC);
-
     if (!$result) {
         echo json_encode(['success' => false, 'message' => 'Order not found. Order_id ' . $pay_order_id]);
         die();
     }
-
     // Cập nhật trạng thái đơn hàng
-
     echo json_encode(['success' => true, 'message' => 'Payment status updated successfully.']);
+
 } catch (Exception $e) {
     echo json_encode(['success' => false, 'message' => 'Database error: ' . $e->getMessage()]);
-}
+    }
 
 ?>
