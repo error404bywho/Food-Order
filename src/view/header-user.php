@@ -136,6 +136,10 @@ if (isset($_SESSION['user_id'])) {
     echo '            <ion-icon name="clipboard-outline"></ion-icon>';
     echo '            <p class="">Edit your profile</p>';
     echo '        </a>';
+    echo '        <a class="user-profile-wrapper">';
+    echo '            <ion-icon name="shield-outline"></ion-icon>';
+    echo '            <p class="">Change your password</p>';
+    echo '        </a>';
     echo '        <a href="./sign_in.php" class="panel-btn btn btn-fill">Logout</a>';
     echo '    </div>';
     echo '</div>';

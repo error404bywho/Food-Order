@@ -684,7 +684,7 @@ header .input-wrapper {
  -moz-box-shadow: 0px 3px 11px 1px rgba(78,78,78,0.57) inset;
 }
 
-.side-panel.cart {transform: translateX(var(--transtleX, -230px)) scale(var(--scale, 0.5));}
+.side-panel.cart {transform: translateX(var(--transtleX, -180px)) scale(var(--scale, 0.5));}
 
 .side-panel.user-profile {transform: translateX(var(--transtleX, -240px)) scale(var(--scale, 0.5));}
 
@@ -1336,12 +1336,6 @@ textarea.input-field {
 
 .copyright-link:is(:hover, :focus) { text-decoration: underline; }
 
-input[type="date"]::before 
-{ color: #aaa; content: attr(placeholder); font-size: var(--fs-4); } 
-input[type="date"]:focus::before,
-input[type="date"]:valid::before { content: ''; }
-
-
  /*-----------------------------------*\
    #SHOPPING CART
 \*-----------------------------------*/
@@ -1674,6 +1668,49 @@ input[type="date"]:valid::before { content: ''; }
 }
 
 
+ /*-----------------------------------*\
+   #LOGIN
+\*-----------------------------------*/
+
+.login-title {
+  text-align: center;
+  margin-block: 15px;
+}
+
+.login-subtitle { margin-block-end: 15px; }
+
+.login-form {
+  display: grid;
+  gap: 30px;
+}
+
+.login-form .btn {
+  min-width: 100%;
+  margin-inline: auto;
+}
+
+.login ion-icon {
+  margin-inline: auto;
+  font-size: var(--fs-3);
+  border: 3px solid var(--cinnabar);
+  color: var(--cinnabar);
+  border-radius: 50%;
+  padding: 5px;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.login-side-subtitle {
+  text-align: center;
+  margin-block: 10px;
+}
+
+.login-side-subtitle a {
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+
 
 
  /*-----------------------------------*\
@@ -1759,6 +1796,12 @@ input[type="date"]:valid::before { content: ''; }
   .product-content .price-wrapper { font-size: var(--fs-3); }
 
   .product-image { padding: 40px; }
+
+  /**
+  * LOGIN
+  */
+
+.login .container { padding-inline: 20%;}
 
 
   /** 
@@ -2113,6 +2156,11 @@ input[type="date"]:valid::before { content: ''; }
   .amount-wrapper { margin-block-start: auto 0; }
 
 
+  /**
+  * LOGIN
+  */
+
+.login .container { padding-inline: 30%;}
 
 
   /**
@@ -2217,6 +2265,12 @@ input[type="date"]:valid::before { content: ''; }
   .product .container {
     grid-template-columns: 0.7fr 1fr;
   }
+
+  /**
+  * LOGIN
+  */
+
+.login .container { padding-inline: 30%;}
 
 
   /**
