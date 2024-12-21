@@ -32,8 +32,8 @@
                 <li>
                     <a href="#footer" class="navbar-link">Contact</a>
                 </li>
-            </ul>
-            
+
+            </ul>         
         </nav>
         </div>
 
@@ -52,29 +52,7 @@
                 </button>
             </div>
         </div>
-<<<<<<< HEAD
-        <div class="whishlist-wrapper">
-            <button class="header-action-btn whishlist" aria-label="Open whishlist" data-panel-btn="whishlist">
-                <ion-icon class="heart-outline" name="heart-outline"></ion-icon>
-                <ion-icon class="heart" name="heart"></ion-icon>
-                <data value="3" class="btn-badge">03</data>
-            </button>
-            <div class="side-panel whishlist" data-side-panel="whishlist">
-                <ul class="panel-list">
-                    
-                </ul>
-                <div class="subtotal">
-                    <p class="subtotal-text">Subtotal:</p>
-                    <data value="696" class="subtotal-value">
-                        0 VNĐ
-                    </data>
-                </div>
-                <a href="./whishlist.html" class="panel-btn btn btn-fill">View Whishlist</a>
-            </div>
-        </div>
-=======
         
->>>>>>> 5e7ee2d9 (Màn hình sau khi thanh toán bằng qr)
         <div class="cart-wrapper">
             <button class="header-action-btn cart" aria-label="Open shopping cart" data-panel-btn="cart">
                 <ion-icon class="basket-outline" name="basket-outline"></ion-icon>
@@ -143,11 +121,7 @@
             </div> 
         </div>
         <?php 
-if(!isset($_SESSION['session_id'])){
-    echo '<div class="user-wrapper">';
-    echo '<a href="sign_in.php" class="btn btn-fill">Login</a>';
-    echo '</div>';
-}else  {
+if (isset($_SESSION['user_id'])) {
     echo '<div class="user-wrapper">';
     echo '    <button class="header-action-btn user-profile" aria-label="user-profile" data-panel-btn="user">';
     echo '        <ion-icon class="user-outline" name="person-circle-outline"></ion-icon>';
@@ -156,7 +130,7 @@ if(!isset($_SESSION['session_id'])){
     echo '    <div class="side-panel user-profile" data-side-panel="user">';
     echo '        <div class="avatar-wrapper">';
     echo '            <ion-icon name="person-circle-outline"></ion-icon>';
-    echo '            <h3 class="username">'. $_SESSION['username'].'</h3>';
+    echo '            <h3 class="username">' . htmlspecialchars($_SESSION['username'], ENT_QUOTES, 'UTF-8') . '</h3>';
     echo '        </div>';
     echo '        <a class="user-profile-wrapper">';
     echo '            <ion-icon name="clipboard-outline"></ion-icon>';
@@ -166,7 +140,6 @@ if(!isset($_SESSION['session_id'])){
     echo '    </div>';
     echo '</div>';
 }
-    
 ?>
     </div>
     </div>

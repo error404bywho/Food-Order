@@ -384,7 +384,10 @@ a.link:not(:last-child)::after {
   padding-block: 20px;
 }
 
-
+.login-wrapper {
+  display: flex;
+  gap: 12px;
+}
 
 .nav-wrapper .h1 {min-width: 100%;}
 
@@ -478,6 +481,7 @@ header .input-wrapper {
   z-index: 4;
 }
 
+
 .search-wrapper.active .input-wrapper {
   visibility: visible;
   opacity: 1;
@@ -567,7 +571,7 @@ header .input-wrapper {
 .navbar-link:is(:hover, :focus-visible),
 .navbar-link.active {color: var(--primary);}
 
-.navbar .btn {min-width: 100%;}
+.navbar .btn { min-width: 100%; }
 
 .heart,
 .basket,
@@ -605,7 +609,6 @@ header .input-wrapper {
 
 .user-profile-wrapper:hover {
   background-color: var(--light-gray);
-
 }
 
 
@@ -618,13 +621,19 @@ header .input-wrapper {
   justify-content: center;
   align-items: center;
   gap: 4px;
-  height: 48px;
+  height: 44px;
   padding-inline: 24px;
   border-radius: 1000px;
   max-width: max-content;
   transition: 200ms cubic-bezier(0, 0.7, 0.3, 1);
   background-color: var(--primary);
   font-weight: var(--fw-500);
+}
+
+.login-wrapper .signup-btn {
+  background-color: var(--white);
+  color: var(--primary);
+  border: 1px solid var(--primary);
 }
 
 .btn-fill {
@@ -1428,7 +1437,7 @@ input[type="date"]:valid::before { content: ''; }
   font-size: var(--fs-6);
 }
 
-.qr-btn:hover {
+:is(.qr-btn, .signup-btn):hover {
   background-color: var(--primary);
   color: var(--white);
 }
@@ -1782,7 +1791,9 @@ input[type="date"]:valid::before { content: ''; }
     z-index: 1;
   }
 
-  .hero-content > :is( *, .btn ) { margin-inline: 0; }
+  .hero-content > *, 
+  .hero-content > a > .btn { margin-inline: 0; }
+  
 
   .hero-banner {
     display: block;
@@ -2000,6 +2011,8 @@ input[type="date"]:valid::before { content: ''; }
      align-items: center;
      gap: 50px;
     }
+
+    .navbar .btn { min-width: max-content; }
 
     .navbar-list {
       display: flex;

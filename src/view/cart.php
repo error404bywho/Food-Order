@@ -76,7 +76,7 @@ if(isset($_GET['buy'])){
      - #HEADER
      -->
 
-     <?php include 'header.php' ?>
+     <?php include 'header-login.php' ?>
 
 
     <main>
