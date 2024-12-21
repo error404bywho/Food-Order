@@ -1,3 +1,4 @@
+
 <header class="header" data-header>
 
 <div class="top-bar">
@@ -32,14 +33,7 @@
                     <a href="#footer" class="navbar-link">Contact</a>
                 </li>
             </ul>
-            <?php 
-            if(!isset($_SESSION['session_id'])){
-                echo '<div class="navbar-wrapper">';
-                echo '<a href="sign_in.php" class="btn btn-fill">Login</a>';
-                echo '</div>';
-            }
-
-        ?>
+            
         </nav>
         </div>
 
@@ -66,54 +60,7 @@
             </button>
             <div class="side-panel whishlist" data-side-panel="whishlist">
                 <ul class="panel-list">
-                    <!-- <li class="panel-item">
-                        <a href="./product-details.html" class="panel-card">
-                            <figure class="item-banner">
-                                <img src="../../assets/images/food-menu-1.png" width="46" height="46" loading="lazy" alt="seafood 1">
-                            </figure>
-    
-                            <div>
-                                <p class="item-title">Seafood 1</p>
-                                <span class="item-value">12$</span>
-                                <span class="item-amount">x1</span>
-                            </div>
-                        </a>
-                        <button class="item-remove-btn">
-                            <ion-icon name="close-outline"></ion-icon>
-                        </button>
-                    </li>
-                    <li class="panel-item">
-                        <a href="./product-details.html" class="panel-card">
-                            <figure class="item-banner">
-                                <img src="../../assets/images/food-menu-2.png" width="46" height="46" loading="lazy" alt="meat 1">
-                            </figure>
-    
-                            <div>
-                                <p class="item-title">Meat 1</p>
-                                <span class="item-value">10$</span>
-                                <span class="item-amount">x1</span>
-                            </div>
-                        </a>
-                        <button class="item-remove-btn">
-                            <ion-icon name="close-outline"></ion-icon>
-                        </button>
-                    </li>
-                    <li class="panel-item">
-                        <a href="./product-details.html" class="panel-card">
-                            <figure class="item-banner">
-                                <img src="../../assets/images/food-menu-3.png" width="46" height="46" loading="lazy" alt="fried chicken 1">
-                            </figure>
-    
-                            <div>
-                                <p class="item-title">Fried Chicken 1</p>
-                                <span class="item-value">9.3$</span>
-                                <span class="item-amount">x1</span>
-                            </div>
-                        </a>
-                        <button class="item-remove-btn">
-                            <ion-icon name="close-outline"></ion-icon>
-                        </button>
-                    </li> -->
+                    
                 </ul>
                 <div class="subtotal">
                     <p class="subtotal-text">Subtotal:</p>
@@ -191,27 +138,32 @@
                 <a href="./cart.php" class="panel-btn btn btn-fill">View Cart</a>
             </div> 
         </div>
-        <div class="user-wrapper">
-            <button class="header-action-btn user-profile" aria-label="user-profile" data-panel-btn="user">
-            <ion-icon class="user-outline" name="person-circle-outline"></ion-icon>
-            <ion-icon class="user" name="person-circle"></ion-icon>
-            </button>
-            <div class="side-panel user-profile" data-side-panel="user">
-
-                <div class="avatar-wrapper">
-                <ion-icon name="person-circle-outline"></ion-icon>
-                <h3 class="username">Bao Ho</h3>
-                </div>
-
-                <a class="user-profile-wrapper">
-                <ion-icon name="clipboard-outline"></ion-icon>
-                <p class="">Edit your profile</p>
-               </a>
-
-               <a href="./sign_in.php" class="panel-btn btn btn-fill">Logout</a>
-
-            </div> 
-        </div>
+        <?php 
+if(!isset($_SESSION['session_id'])){
+    echo '<div class="user-wrapper">';
+    echo '<a href="sign_in.php" class="btn btn-fill">Login</a>';
+    echo '</div>';
+}else  {
+    echo '<div class="user-wrapper">';
+    echo '    <button class="header-action-btn user-profile" aria-label="user-profile" data-panel-btn="user">';
+    echo '        <ion-icon class="user-outline" name="person-circle-outline"></ion-icon>';
+    echo '        <ion-icon class="user" name="person-circle"></ion-icon>';
+    echo '    </button>';
+    echo '    <div class="side-panel user-profile" data-side-panel="user">';
+    echo '        <div class="avatar-wrapper">';
+    echo '            <ion-icon name="person-circle-outline"></ion-icon>';
+    echo '            <h3 class="username">'. $_SESSION['username'].'</h3>';
+    echo '        </div>';
+    echo '        <a class="user-profile-wrapper">';
+    echo '            <ion-icon name="clipboard-outline"></ion-icon>';
+    echo '            <p class="">Edit your profile</p>';
+    echo '        </a>';
+    echo '        <a href="./sign_in.php" class="panel-btn btn btn-fill">Logout</a>';
+    echo '    </div>';
+    echo '</div>';
+}
+    
+?>
     </div>
     </div>
 </div>

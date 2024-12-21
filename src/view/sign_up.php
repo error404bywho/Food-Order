@@ -36,7 +36,9 @@ if (isset($_GET["code"])) {
         $user = Check_Exist_By_Email($email);
         // 1.1 DANG KI DA TON TAI TAI KHOAN ==> KIEM TRA DB LAY RA NGUOI DUNG THEO EMAIL VA DANG NHAP
         if($user){ 
-                $_SESSION['user_id'] = $user->Get_Id();
+                $_SESSION['session_id'] = $user->Get_Id();
+                $_SESSION['username'] = $user->Get_Fullname();
+                $_SESSION['email'] = $emai;;
                 header("Location: index.php");  //login success
                 exit();
         } else // 1.2 DANG KI CHUA CO TAI KHOAN => LAY RA USERNAME VA EMAIL, GENERATE RANDOM PASSWORD, GUI VE MAIL PASSWORD
@@ -45,13 +47,12 @@ if (isset($_GET["code"])) {
                 // Xử lý thông tin người dùng
                 $Random_Password = generateRandomPassword(12);  
                 $name = $google_user_info['name'] ?? null;      // full name
+                $_SESSION['username'] = $name;
+                $_SESSION['email'] = $email;
                 $id = hashToElevenDigitId($email);              // id
                 $password = hashPassword($Random_Password);    // password
-             
-                
-              
-                
-                $_SESSION['user_id'] = Insert_User($email,$password,$name,'','','','user','active');
+
+                Insert_User($email,$password,$name,'','','','user','active');
                 Send_Password_To_Email($Random_Password);
                 header("Location: index.php");  //login success
             }
@@ -91,6 +92,7 @@ if (isset($_GET["code"])) {
         <i class="fa-brands fa-google google-logo"></i>
         Continue with Google
     </a>
-
+    <p>YOU ALREADY HAVE ACCOUNT ? </p>
+    <a href="sign_in.php">SIGN IN HERE !</a>
 </body>
 </html>

@@ -11,12 +11,14 @@ $user = Check_Login($email,$password);
 if($user !== null){
     if($user->Get_Role() === 'admin'){
         $_SESSION['session_id'] = $user->get_ID();
+        $_SESSION['username'] = $user->Get_Fullname();
         $_SESSION['email'] = $email;
         Header("Location: ../view/admin.php");
         exit; 
     } else {
         // Dieu huong cho user
         $_SESSION['session_id'] = $user->get_ID();
+        $_SESSION['username'] = $user->Get_Fullname();
         $_SESSION['email'] = $email;
         Header("Location: ../view/index.php");
         }
@@ -24,7 +26,6 @@ if($user !== null){
         $_SESSION['error'] = "Email hoặc mật khẩu không chính xác.";
         Header("Location: ../view/404.html");
 }else {
-
     $_SESSION['error'] = "lỗi đăng nhập";
     Header("Location: ../view/405.html");
 }

@@ -20,18 +20,17 @@ function Check_Login($email,$plain_password){
     
     if($result){
         $Id = $result['id'];
-        $Email = $result['Email'];
-        $Password = $result['Password'];
-        $Fullname = $result['Fullname'];
-        $Phone = $result['Phone'];
-        $Birthday = $result['Birthday'];
-        $Address = $result['Address'];
-        $Role = $result['Role'];
-        $Status = $result['Status'];
+        $Email = $result['email'];
+        $Password = $result['password'];
+        $Fullname = $result['fullname'];
+        $Phone = $result['phone'];
+        $Birthday = $result['birthday'];
+        $Address = $result['address'];
+        $Role = $result['role'];
+        $Status = $result['status'];
         
         $user = new Users($Id,$Email,$Password,$Fullname,$Phone,$Birthday,$Address,$Role,$Status);
         return $user;
-        // Dieu huong cho admin
     } else {
        return null;
     }
@@ -92,7 +91,7 @@ try{
     $query->execute();
     if($query){
         $statement = '200'; // insert success
-        $_SESSION['get_id'] = $pdo->lastInsertId();
+        $_SESSION['session_id'] = $pdo->lastInsertId();
         
         return $statement;
     } else {                // insert failed

@@ -6,6 +6,43 @@ include_once '../model/Bill.php';
 include_once '../controller/inc/function_products.php';
 include_once '../controller/inc/function_cart.php';
 ?>
+
+<?php
+if(isset($_GET['buy'])){
+    /*---------------------------EDIT THIS-------------------------------------- */
+    $category  = new Category("5","chicken","assets/images/chicken/chicken.png",1);
+    
+    $product_1 = new product("1","Chicken wings","assets/img/product/chicken/chicken_wings.png","25000",1132005,2,5,
+    "A delicious and crispy fried chicken served with special dipping sauces, perfect for a quick meal.",$category,);
+   
+    $products = [$product_1,$product_1]; //trong giỏ hàng có 2 sản phẩm, mỗi sản phẩm có số lượng là 2
+    $VoucherCode = 0;       // giảm 10% (voucher t tự cho)
+    $VoucherId = Get_voucher_id_by_code($VoucherCode);//lấy ra id voucher từ code voucher
+    $discount = Get_voucher_discount_by_Code($VoucherCode);//lấy ra discount từ code voucher
+    $products_in_cart = $products;  //dùng tạm biến $products_in_cart danh sách sp được thêm vào giỏ hàng 
+/*---------------------------EDIT THIS-------------------------------------- */
+    $total = 0;
+
+    for($i = 0;$i<count($products_in_cart);$i++){
+        $total += $products_in_cart[$i]->Get_Price();
+    }
+    $id = rand(1,999999);
+    $totalAmount = $total;
+    $content = "bill";
+    $discountAmount = $total*$discount;
+    $FinalAmount = $total - $total*$discount;
+    $Email = $_SESSION['email'];
+    $Address = $_GET['Address'];
+    $Phone = $_GET['Phone'];
+    $idUser = $_SESSION['session_id'];
+    $idVoucher = $VoucherId;
+    $bill = new Bill($id,$Email,$Address,$Phone,$content,$totalAmount,$discountAmount,$FinalAmount,$idUser,$idVoucher,null);
+    $check = Create_Bill($bill);
+    unset($_GET['buy']);
+    // echo $bill->__toString();
+    echo "pay successfully";
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -70,7 +107,7 @@ include_once '../controller/inc/function_cart.php';
                             <li class="product-item">
 
                                 <figure class="item-banner">
-                                    <img src="../../assets/images/food-menu-1.png" width="80" alt="">
+                                    <img src="" width="80" alt="">
                                 </figure>
 
                                 <div class="detail">
@@ -340,42 +377,7 @@ include_once '../controller/inc/function_cart.php';
                             </button>
 
                         </form>
-<?php
-if(isset($_GET['buy'])){
-    /*---------------------------EDIT THIS-------------------------------------- */
-    $category  = new Category("5","chicken","assets/images/chicken/chicken.png",1);
-    
-    $product_1 = new product("1","Chicken wings","assets/img/product/chicken/chicken_wings.png","25000",1132005,2,5,
-    "A delicious and crispy fried chicken served with special dipping sauces, perfect for a quick meal.",$category,);
-   
-    $products = [$product_1,$product_1]; //trong giỏ hàng có 2 sản phẩm, mỗi sản phẩm có số lượng là 2
-    $VoucherCode = 0;       // giảm 10% (voucher t tự cho)
-    $VoucherId = Get_voucher_id_by_code($VoucherCode);//lấy ra id voucher từ code voucher
-    $discount = Get_voucher_discount_by_Code($VoucherCode);//lấy ra discount từ code voucher
-    $products_in_cart = $products;  //dùng tạm biến $products_in_cart danh sách sp được thêm vào giỏ hàng 
-/*---------------------------EDIT THIS-------------------------------------- */
-    $total = 0;
 
-    for($i = 0;$i<count($products_in_cart);$i++){
-        $total += $products_in_cart[$i]->Get_Price();
-    }
-    $id = rand(1,999999);
-    $totalAmount = $total;
-    $content = "bill";
-    $discountAmount = $total*$discount;
-    $FinalAmount = $total - $total*$discount;
-    $Email = $_SESSION['email'];
-    $Address = $_GET['Address'];
-    $Phone = $_GET['Phone'];
-    $idUser = $_SESSION['session_id'];
-    $idVoucher = $VoucherId;
-    $bill = new Bill($id,$Email,$Address,$Phone,$content,$totalAmount,$discountAmount,$FinalAmount,$idUser,$idVoucher,null);
-    $check = Create_Bill($bill);
-    unset($_GET['buy']);
-    // echo $bill->__toString();
-    echo "pay successfully";
-}
-?>
 
 
 
